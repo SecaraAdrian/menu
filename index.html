@@ -1,72 +1,130 @@
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Crater - Meniu</title>
-    <link rel="stylesheet" href="style.css">
+    <title>La Crater | Bar & Bistro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-stone-50 text-stone-800 font-sans leading-relaxed">
 
-<header>
-    <h1>🔥 La Crater</h1>
-    <p>Meniu Digital</p>
-</header>
+    <header class="bg-white shadow-md sticky top-0 z-50 overflow-hidden">
+        <div class="bg-orange-600 text-white text-[10px] py-1 text-center uppercase tracking-widest font-bold">
+            Timp de așteptare: 15 - 50 min
+        </div>
+        <div class="p-4 text-center">
+            <h1 class="text-3xl font-black tracking-tighter text-stone-900 italic">LA CRATER</h1>
+            <p class="text-xs text-stone-500 font-medium uppercase tracking-widest leading-none">Bar & Bistro by Rezident's</p>
+            <div class="mt-2 flex justify-center gap-4 text-orange-600">
+                <a href="tel:0772239588" class="text-sm font-bold border border-orange-200 px-3 py-1 rounded-full bg-orange-50">
+                    <i class="fa-solid fa-phone mr-1"></i> Rezervări
+                </a>
+            </div>
+        </div>
+        
+        <nav class="flex gap-4 overflow-x-auto px-4 py-3 border-t scrollbar-hide no-scrollbar">
+            <a href="#grill" class="whitespace-nowrap px-4 py-1 bg-stone-900 text-white rounded-full text-sm font-bold shadow-md">Grill</a>
+            <a href="#pizza" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Pizza</a>
+            <a href="#paste" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Paste</a>
+            <a href="#ciorbe" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Ciorbe</a>
+            <a href="#copii" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Meniu Copii</a>
+            <a href="#bauturi" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Băuturi</a>
+        </nav>
+    </header>
 
-<div class="container">
+    <main class="max-w-2xl mx-auto p-4 space-y-12 pb-20">
 
-    <a href="menu.pdf" target="_blank" class="pdf-btn">📄 Vezi meniul PDF</a>
+        <section id="grill" class="space-y-4">
+            <h2 class="text-2xl font-black text-stone-900 border-b-4 border-orange-500 inline-block">PLATOURI GRILL</h2>
+            <div class="grid gap-4">
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-100">
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-black text-lg uppercase">Family Grill</h3>
+                        <span class="text-orange-600 font-black">112 lei</span>
+                    </div>
+                    <p class="text-sm text-stone-500 italic">ceafă, piept, aripi picante, caş pane, cartofi, sos</p>
+                </div>
 
-    <h2>🍖 Grill</h2>
-    <div class="menu-item">
-        <span>Ceafă porc</span>
-        <span>32 lei</span>
-    </div>
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-100">
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-black text-lg uppercase">La Crater's Grill</h3>
+                        <span class="text-orange-600 font-black">175 lei</span>
+                    </div>
+                    <p class="text-sm text-stone-500 italic">ceafă, cotlet, piept, aripi, caş pane, mici(4), cartofi, sos</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="menu-item">
-        <span>Mititei (4 buc)</span>
-        <span>35 lei</span>
-    </div>
+        <section id="pizza" class="space-y-4">
+            <h2 class="text-2xl font-black text-stone-900 border-b-4 border-orange-500 inline-block uppercase">Pizza</h2>
+            <div class="grid gap-3">
+                <div class="flex justify-between border-b border-stone-200 pb-2">
+                    <div>
+                        <h3 class="font-bold uppercase">Margherita</h3>
+                        <p class="text-xs text-stone-500">sos pomodoro, mozzarella</p>
+                    </div>
+                    <span class="font-black text-stone-900">30 lei</span>
+                </div>
+                <div class="flex justify-between border-b border-stone-200 pb-2">
+                    <div>
+                        <h3 class="font-bold uppercase">Quatro Stagioni</h3>
+                        <p class="text-xs text-stone-500">șuncă, ciuperci, porumb, măsline, mozzarella</p>
+                    </div>
+                    <span class="font-black text-stone-900">35 lei</span>
+                </div>
+                <div class="flex justify-between border-b border-stone-200 pb-2">
+                    <div>
+                        <h3 class="font-bold uppercase">Diavola con Gorgonzola</h3>
+                        <p class="text-xs text-stone-500">salam picant, gorgonzola, mozzarella</p>
+                    </div>
+                    <span class="font-black text-stone-900">39 lei</span>
+                </div>
+            </div>
+        </section>
 
-    <div class="menu-item">
-        <span>Scăriță BBQ</span>
-        <span>59 lei</span>
-    </div>
+        <section id="copii" class="bg-orange-50 p-6 rounded-3xl border-2 border-dashed border-orange-200 space-y-4">
+            <h2 class="text-2xl font-black text-orange-600 text-center uppercase tracking-tighter">Meniu Copii 🐣</h2>
+            <div class="grid gap-4">
+                <div class="flex justify-between items-center bg-white p-3 rounded-xl">
+                    <span class="font-bold">TOM & JERRY (cașcaval, cartofi, sos)</span>
+                    <span class="font-black text-orange-600 italic">29 lei</span>
+                </div>
+                <div class="flex justify-between items-center bg-white p-3 rounded-xl">
+                    <span class="font-bold">LION KING (crispy pui, cartofi, sos)</span>
+                    <span class="font-black text-orange-600 italic">29 lei</span>
+                </div>
+            </div>
+        </section>
 
-    <h2>🍕 Pizza</h2>
-    <div class="menu-item">
-        <span>Margherita</span>
-        <span>30 lei</span>
-    </div>
+        <section id="bauturi" class="space-y-4">
+            <h2 class="text-2xl font-black text-stone-900 border-b-4 border-orange-500 inline-block uppercase">Răcoritoare</h2>
+            <div class="grid grid-cols-1 gap-2 bg-stone-100 p-4 rounded-2xl">
+                <div class="flex justify-between text-sm">
+                    <span>COCA COLA 500 ML</span>
+                    <span class="font-bold">11 lei</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span>LIMONADĂ 500 ML</span>
+                    <span class="font-bold">18 lei</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span>APĂ MINERALĂ/PLATĂ 330 ML</span>
+                    <span class="font-bold">8 lei</span>
+                </div>
+            </div>
+        </section>
 
-    <div class="menu-item">
-        <span>Diavola</span>
-        <span>37 lei</span>
-    </div>
+    </main>
 
-    <h2>🥗 Salate</h2>
-    <div class="menu-item">
-        <span>Cezar</span>
-        <span>34 lei</span>
-    </div>
+    <footer class="bg-stone-900 text-stone-400 p-8 text-center text-xs space-y-4">
+        <p>Substanțe care cauzează alergii sau intoleranțe (Regulament UE 1169/2011)</p>
+        <p class="text-stone-600">Creat cu ❤️ pentru La Crater</p>
+    </footer>
 
-    <div class="menu-item">
-        <span>Grecească</span>
-        <span>34 lei</span>
-    </div>
-
-    <h2>🍰 Desert</h2>
-    <div class="menu-item">
-        <span>Papanași</span>
-        <span>28 lei</span>
-    </div>
-
-</div>
-
-<footer>
-    <p>📞 Rezervări: 0772 239 588</p>
-</footer>
-
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </body>
 </html>
