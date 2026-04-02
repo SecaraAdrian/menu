@@ -1,1 +1,55 @@
 
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f0f0f;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(45deg, #1f1f1f, #000);
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+h2 {
+    margin-top: 30px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+}
+
+.pdf-btn {
+    display: block;
+    text-align: center;
+    background: #e63946;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+}
