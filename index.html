@@ -6,125 +6,175 @@
     <title>La Crater | Bar & Bistro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans leading-relaxed">
+<body class="bg-stone-50 text-stone-800 font-sans">
 
-    <header class="bg-white shadow-md sticky top-0 z-50 overflow-hidden">
-        <div class="bg-orange-600 text-white text-[10px] py-1 text-center uppercase tracking-widest font-bold">
-            Timp de așteptare: 15 - 50 min
-        </div>
+    <div class="bg-orange-600 text-white text-[10px] py-1.5 text-center uppercase tracking-widest font-bold sticky top-0 z-[60]">
+        Timp de așteptare: 15 - 50 min [cite: 1, 2]
+    </div>
+
+    <header class="bg-white shadow-sm sticky top-[28px] z-50">
         <div class="p-4 text-center">
-            <h1 class="text-3xl font-black tracking-tighter text-stone-900 italic">LA CRATER</h1>
-            <p class="text-xs text-stone-500 font-medium uppercase tracking-widest leading-none">Bar & Bistro by Rezident's</p>
-            <div class="mt-2 flex justify-center gap-4 text-orange-600">
-                <a href="tel:0772239588" class="text-sm font-bold border border-orange-200 px-3 py-1 rounded-full bg-orange-50">
-                    <i class="fa-solid fa-phone mr-1"></i> Rezervări
+            <h1 class="text-3xl font-black tracking-tighter text-stone-900 italic uppercase">La Crater [cite: 9]</h1>
+            <p class="text-xs text-stone-500 font-medium uppercase tracking-widest leading-none">Bar & Bistro by Rezident's [cite: 10]</p>
+            <div class="mt-3 flex justify-center gap-2">
+                <a href="tel:0772239588" class="text-xs font-bold border border-orange-200 px-4 py-1.5 rounded-full bg-orange-50 text-orange-600">
+                    <i class="fa-solid fa-phone mr-1"></i> REZERVĂRI: 0772 239 588 
                 </a>
             </div>
         </div>
         
-        <nav class="flex gap-4 overflow-x-auto px-4 py-3 border-t scrollbar-hide no-scrollbar">
-            <a href="#grill" class="whitespace-nowrap px-4 py-1 bg-stone-900 text-white rounded-full text-sm font-bold shadow-md">Grill</a>
-            <a href="#pizza" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Pizza</a>
-            <a href="#paste" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Paste</a>
-            <a href="#ciorbe" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Ciorbe</a>
-            <a href="#copii" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Meniu Copii</a>
-            <a href="#bauturi" class="whitespace-nowrap px-4 py-1 bg-white border border-stone-200 rounded-full text-sm font-semibold">Băuturi</a>
+        <nav class="flex gap-4 overflow-x-auto px-4 py-3 border-t no-scrollbar bg-white">
+            <a href="#grill" class="whitespace-nowrap px-4 py-1 bg-orange-600 text-white rounded-full text-sm font-bold shadow-sm">Grill</a>
+            <a href="#specialitati" class="whitespace-nowrap px-4 py-1 bg-stone-100 rounded-full text-sm font-semibold">Specialități</a>
+            <a href="#pizza" class="whitespace-nowrap px-4 py-1 bg-stone-100 rounded-full text-sm font-semibold">Pizza</a>
+            <a href="#paste" class="whitespace-nowrap px-4 py-1 bg-stone-100 rounded-full text-sm font-semibold">Paste</a>
+            <a href="#ciorbe" class="whitespace-nowrap px-4 py-1 bg-stone-100 rounded-full text-sm font-semibold">Ciorbe</a>
+            <a href="#pui" class="whitespace-nowrap px-4 py-1 bg-stone-100 rounded-full text-sm font-semibold">Pui</a>
+            <a href="#salate" class="whitespace-nowrap px-4 py-1 bg-stone-100 rounded-full text-sm font-semibold">Salate</a>
+            <a href="#bauturi" class="whitespace-nowrap px-4 py-1 bg-stone-100 rounded-full text-sm font-semibold">Băuturi</a>
         </nav>
     </header>
 
-    <main class="max-w-2xl mx-auto p-4 space-y-12 pb-20">
+    <main class="max-w-xl mx-auto p-4 space-y-10 pb-24">
 
-        <section id="grill" class="space-y-4">
-            <h2 class="text-2xl font-black text-stone-900 border-b-4 border-orange-500 inline-block">PLATOURI GRILL</h2>
-            <div class="grid gap-4">
-                <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-100">
-                    <div class="flex justify-between items-center mb-1">
-                        <h3 class="font-black text-lg uppercase">Family Grill</h3>
-                        <span class="text-orange-600 font-black">112 lei</span>
+        <section id="grill" class="scroll-mt-40">
+            <h2 class="text-xl font-black text-stone-900 border-l-4 border-orange-500 pl-3 mb-4 uppercase">Platouri Grill [cite: 6]</h2>
+            <div class="space-y-3">
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-100 flex justify-between">
+                    <div>
+                        <h3 class="font-bold uppercase text-sm">Family Grill</h3>
+                        <p class="text-xs text-stone-500 italic">ceafă, piept, aripi picante, caş pane, cartofl, sos [cite: 11]</p>
                     </div>
-                    <p class="text-sm text-stone-500 italic">ceafă, piept, aripi picante, caş pane, cartofi, sos</p>
+                    <span class="font-black text-orange-600 ml-2">112 lei [cite: 11]</span>
                 </div>
-
-                <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-100">
-                    <div class="flex justify-between items-center mb-1">
-                        <h3 class="font-black text-lg uppercase">La Crater's Grill</h3>
-                        <span class="text-orange-600 font-black">175 lei</span>
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-100 flex justify-between">
+                    <div>
+                        <h3 class="font-bold uppercase text-sm">La Crater's Grill</h3>
+                        <p class="text-xs text-stone-500 italic">ceafă, cotiet, plept, aripi, caş pane, mici(4), cartofi, sos [cite: 11]</p>
                     </div>
-                    <p class="text-sm text-stone-500 italic">ceafă, cotlet, piept, aripi, caş pane, mici(4), cartofi, sos</p>
+                    <span class="font-black text-orange-600 ml-2">175 lei [cite: 11]</span>
                 </div>
             </div>
         </section>
 
-        <section id="pizza" class="space-y-4">
-            <h2 class="text-2xl font-black text-stone-900 border-b-4 border-orange-500 inline-block uppercase">Pizza</h2>
-            <div class="grid gap-3">
-                <div class="flex justify-between border-b border-stone-200 pb-2">
+        <section id="specialitati" class="scroll-mt-40 bg-stone-900 text-white p-6 rounded-3xl space-y-4">
+            <h2 class="text-lg font-black text-orange-400 uppercase tracking-tighter">Specialitatea Bucătarului [cite: 17]</h2>
+            <div class="divide-y divide-stone-800">
+                <div class="py-3 flex justify-between items-start">
                     <div>
-                        <h3 class="font-bold uppercase">Margherita</h3>
-                        <p class="text-xs text-stone-500">sos pomodoro, mozzarella</p>
+                        <h3 class="font-bold uppercase text-sm">Ceafă Ţigănească</h3>
+                        <p class="text-xs text-stone-400">ou, slănină, ceapă, ardei, sos tomate, usturoi [cite: 19]</p>
                     </div>
-                    <span class="font-black text-stone-900">30 lei</span>
+                    <span class="font-bold text-orange-400">44 lei [cite: 19]</span>
                 </div>
-                <div class="flex justify-between border-b border-stone-200 pb-2">
+                <div class="py-3 flex justify-between items-start">
                     <div>
-                        <h3 class="font-bold uppercase">Quatro Stagioni</h3>
-                        <p class="text-xs text-stone-500">șuncă, ciuperci, porumb, măsline, mozzarella</p>
+                        <h3 class="font-bold uppercase text-sm">Şniţel La Crater</h3>
+                        <p class="text-xs text-stone-400">pui, ceapă, ardei, bacon, cheddar, parmezan, cartofi aurii [cite: 19]</p>
                     </div>
-                    <span class="font-black text-stone-900">35 lei</span>
+                    <span class="font-bold text-orange-400">58 lei [cite: 19]</span>
                 </div>
-                <div class="flex justify-between border-b border-stone-200 pb-2">
+                <div class="py-3 flex justify-between items-start">
                     <div>
-                        <h3 class="font-bold uppercase">Diavola con Gorgonzola</h3>
-                        <p class="text-xs text-stone-500">salam picant, gorgonzola, mozzarella</p>
+                        <h3 class="font-bold uppercase text-sm">Burger House La Crater (350g)</h3>
+                        <p class="text-xs text-stone-400">vită/porc, sos cheddar, cartofi pai [cite: 19, 24, 26]</p>
                     </div>
-                    <span class="font-black text-stone-900">39 lei</span>
+                    <span class="font-bold text-orange-400">47 lei [cite: 19, 25]</span>
                 </div>
             </div>
         </section>
 
-        <section id="copii" class="bg-orange-50 p-6 rounded-3xl border-2 border-dashed border-orange-200 space-y-4">
-            <h2 class="text-2xl font-black text-orange-600 text-center uppercase tracking-tighter">Meniu Copii 🐣</h2>
-            <div class="grid gap-4">
-                <div class="flex justify-between items-center bg-white p-3 rounded-xl">
-                    <span class="font-bold">TOM & JERRY (cașcaval, cartofi, sos)</span>
-                    <span class="font-black text-orange-600 italic">29 lei</span>
+        <section id="pizza" class="scroll-mt-40">
+            <h2 class="text-xl font-black text-stone-900 border-l-4 border-orange-500 pl-3 mb-4 uppercase">Pizza [cite: 38]</h2>
+            <div class="grid gap-2 text-sm">
+                <div class="flex justify-between p-2 border-b">
+                    <span>MARGHERITA</span> <span class="font-bold">30 lei [cite: 43]</span>
                 </div>
-                <div class="flex justify-between items-center bg-white p-3 rounded-xl">
-                    <span class="font-bold">LION KING (crispy pui, cartofi, sos)</span>
-                    <span class="font-black text-orange-600 italic">29 lei</span>
+                <div class="flex justify-between p-2 border-b">
+                    <span>QUATRO STAGIONI</span> <span class="font-bold">35 lei [cite: 43]</span>
+                </div>
+                <div class="flex justify-between p-2 border-b">
+                    <span>DIAVOLA</span> <span class="font-bold">37 lei [cite: 43]</span>
+                </div>
+                <div class="flex justify-between p-2 border-b">
+                    <span>QUATRO FORMAGI</span> <span class="font-bold">41 lei [cite: 43]</span>
+                </div>
+                <div class="flex justify-between p-2 border-b bg-orange-50 font-bold">
+                    <span>LA CRATER (Specială)</span> <span class="text-orange-600">48 lei [cite: 43]</span>
                 </div>
             </div>
         </section>
 
-        <section id="bauturi" class="space-y-4">
-            <h2 class="text-2xl font-black text-stone-900 border-b-4 border-orange-500 inline-block uppercase">Răcoritoare</h2>
-            <div class="grid grid-cols-1 gap-2 bg-stone-100 p-4 rounded-2xl">
-                <div class="flex justify-between text-sm">
-                    <span>COCA COLA 500 ML</span>
-                    <span class="font-bold">11 lei</span>
+        <section id="ciorbe" class="scroll-mt-40">
+            <h2 class="text-xl font-black text-stone-900 border-l-4 border-orange-500 pl-3 mb-4 uppercase">Ciorbe [cite: 14]</h2>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-sm uppercase">Ciorbă de burtă (400 gr)</h3>
+                        <p class="text-xs text-stone-500 italic">burtă vită, usturoi, smântână [cite: 15]</p>
+                    </div>
+                    <span class="font-black">27 lei [cite: 15]</span>
                 </div>
-                <div class="flex justify-between text-sm">
-                    <span>LIMONADĂ 500 ML</span>
-                    <span class="font-bold">18 lei</span>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-sm uppercase">Ciorbă rădăuţeană de pui (400 gr)</h3>
+                    </div>
+                    <span class="font-black">27 lei [cite: 15]</span>
                 </div>
-                <div class="flex justify-between text-sm">
-                    <span>APĂ MINERALĂ/PLATĂ 330 ML</span>
-                    <span class="font-bold">8 lei</span>
+            </div>
+        </section>
+
+        <section id="bauturi" class="scroll-mt-40">
+            <h2 class="text-xl font-black text-stone-900 border-l-4 border-orange-500 pl-3 mb-4 uppercase">Răcoritoare [cite: 39]</h2>
+            <div class="bg-white rounded-2xl overflow-hidden border">
+                <table class="w-full text-sm text-left">
+                    <tbody class="divide-y">
+                        <tr class="p-3">
+                            <td class="p-3 uppercase">Coca Cola 500 ml</td>
+                            <td class="p-3 font-bold text-right">11 lei [cite: 42]</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 uppercase">Limonadă 500 ml</td>
+                            <td class="p-3 font-bold text-right">18 lei [cite: 42]</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 uppercase">Apă Minerală/Plată 330 ml</td>
+                            <td class="p-3 font-bold text-right">8 lei [cite: 42]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="desert" class="scroll-mt-40">
+            <h2 class="text-xl font-black text-stone-900 border-l-4 border-orange-500 pl-3 mb-4 uppercase text-center">Desert [cite: 67] 🍰</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-white p-3 rounded-xl shadow-sm text-center border">
+                    <h3 class="text-xs font-bold uppercase">Papanaşi</h3>
+                    <p class="text-orange-600 font-black">28 lei [cite: 69]</p>
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-sm text-center border">
+                    <h3 class="text-xs font-bold uppercase">Lava Cake</h3>
+                    <p class="text-orange-600 font-black">32 lei [cite: 69]</p>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-stone-900 text-stone-400 p-8 text-center text-xs space-y-4">
-        <p>Substanțe care cauzează alergii sau intoleranțe (Regulament UE 1169/2011)</p>
-        <p class="text-stone-600">Creat cu ❤️ pentru La Crater</p>
+    <footer class="bg-stone-100 p-6 text-[10px] text-stone-500 space-y-4">
+        <div class="max-w-xl mx-auto">
+            <p class="font-bold uppercase mb-2">Alergeni (Regulament UE 1169/2011)[cite: 64]:</p>
+            <p>1. Cereale cu gluten, 2. Crustacee, 3. Ouă, 4. Pește, 7. Lapte/Lactoză, 8. Fructe cu coajă[cite: 71, 73, 74, 75, 78, 79].</p>
+            <p class="mt-4 text-center text-stone-400 tracking-widest uppercase">Vă mulțumim pentru alegerea făcută! [cite: 4]</p>
+        </div>
     </footer>
 
-    <style>
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
 </body>
 </html>
