@@ -1758,22 +1758,52 @@
 </footer>
 
 <script>
-  // Active nav pill on scroll
+  const header = document.querySelector('header');
+  const banner = document.querySelector('.wait-banner');
+  const navPills = document.querySelectorAll('.nav-pill');
   const sections = document.querySelectorAll('section[id]');
-  const pills = document.querySelectorAll('.nav-pill');
+
+  // Funcție pentru calculul spațiului ocupat de header + banner
+  const getOffset = () => (banner?.offsetHeight || 0) + (header?.offsetHeight || 0) + 8;
+
+  // 1. Click Interceptat - Scroll precis
+  navPills.forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      const targetId = pill.getAttribute('href');
+      if (!targetId.startsWith('#')) return;
+      
+      e.preventDefault();
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - getOffset();
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // 2. IntersectionObserver - Detectare secțiune activă
+  // Folosim un rootMargin dinamic bazat pe înălțimea header-ului
+  const observerOptions = {
+    root: null,
+    rootMargin: `-${getOffset() + 10}px 0px -75% 0px`, // +10px marjă de siguranță
+    threshold: 0
+  };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        pills.forEach(p => p.classList.remove('active'));
-        const active = document.querySelector(`.nav-pill[href="#${e.target.id}"]`);
-        if (active) {
-          active.classList.add('active');
-          active.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navPills.forEach(p => p.classList.remove('active'));
+        const activePill = document.querySelector(`.nav-pill[href="#${entry.target.id}"]`);
+        
+        if (activePill) {
+          activePill.classList.add('active');
+          // Scroll orizontal automat pentru meniul de categorii
+          activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
       }
     });
-  }, { rootMargin: '-40% 0px -55% 0px' });
+  }, observerOptions);
 
   sections.forEach(s => observer.observe(s));
 </script>
