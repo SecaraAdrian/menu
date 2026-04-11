@@ -1,464 +1,2168 @@
 <!DOCTYPE html>
+
 <html lang="ro">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>La Crater — Bar & Bistro</title>
+
 <link rel="icon" type="image/x-icon" href="favicon.ico.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
+
 :root {
+
 --ember: #D4501A;
+
 --ember-light: #E8622A;
+
 --ember-glow: rgba(212,80,26,0.15);
+
 --coal: #0F0E0C;
+
 --ash: #1C1A17;
+
 --smoke: #2A2824;
+
 --stone: #3D3A35;
+
 --parchment: #F5F0E8;
+
 --cream: #FAF7F2;
+
 --gold: #C8A96E;
+
 --gold-dim: rgba(200,169,110,0.3);
+
 --text-primary: #F0EBE1;
+
 --text-muted: #8A8070;
+
 --text-dim: #5A554D;
+
 --border: rgba(255,255,255,0.06);
+
 --border-warm: rgba(200,169,110,0.15);
+
 }
+
+
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
 html { scroll-behavior: smooth; }
 
+
+
 body {
+
 background: var(--coal);
+
 color: var(--text-primary);
+
 font-family: 'DM Sans', sans-serif;
+
 min-height: 100vh;
+
 overflow-x: hidden;
+
 }
 
-/* ─── LANGUAGE SWITCHER STYLES ─── */
-.lang-switcher {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  display: flex;
-  gap: 4px;
-  z-index: 110;
-}
-.lang-btn {
-  background: var(--ash);
-  color: var(--text-muted);
-  border: 1px solid var(--border-warm);
-  padding: 5px 8px;
-  font-size: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: all 0.2s;
-}
-.lang-btn.active {
-  background: var(--ember);
-  color: white;
-  border-color: var(--ember);
-}
 
-/* ─── TRANSLATION LOGIC ─── */
-body.lang-en .ro, body.lang-en .hu { display: none !important; }
-body.lang-hu .ro, body.lang-hu .en { display: none !important; }
-body:not(.lang-en):not(.lang-hu) .en, body:not(.lang-en):not(.lang-hu) .hu { display: none !important; }
 
 /* ─── NOISE TEXTURE OVERLAY ─── */
+
 body::before {
+
 content: '';
+
 position: fixed;
+
 inset: 0;
+
 background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+
 pointer-events: none;
+
 z-index: 0;
+
 opacity: 0.5;
+
 }
+
+
 
 /* ─── MOUNTAIN BACKGROUND ─── */
+
 .mountain-bg {
+
 position: fixed;
-bottom: 0; left: 0; right: 0;
-width: 100%; height: 100vh;
-pointer-events: none; z-index: 0;
+
+bottom: 0;
+
+left: 0;
+
+right: 0;
+
+width: 100%;
+
+height: 100vh;
+
+pointer-events: none;
+
+z-index: 0;
+
 }
+
+
 
 /* ─── WAIT BANNER ─── */
+
 .wait-banner {
+
 background: var(--ember);
+
 color: #fff;
+
 text-align: center;
+
 padding: 8px 16px;
+
 font-size: 10px;
+
 letter-spacing: 0.2em;
+
 text-transform: uppercase;
+
 font-weight: 600;
+
 position: sticky;
+
 top: 0;
+
 z-index: 100;
+
 }
+
+
 
 /* ─── HEADER ─── */
+
 header {
+
 position: sticky;
+
 top: 28px;
+
 z-index: 90;
+
 background: rgba(15,14,12,0.92);
+
 backdrop-filter: blur(20px);
+
 -webkit-backdrop-filter: blur(20px);
+
 border-bottom: 1px solid var(--border-warm);
+
 }
+
+
 
 .header-top {
+
 padding: 20px 16px 12px;
+
 text-align: center;
-position: relative;
+
 }
+
+
 
 .logo-badge {
+
 display: inline-flex;
+
 flex-direction: column;
+
 align-items: center;
+
 gap: 2px;
+
 }
+
+
 
 .logo-main {
+
 font-family: 'Playfair Display', serif;
+
 font-size: 36px;
+
 font-weight: 900;
+
 font-style: italic;
+
 letter-spacing: -1px;
+
 line-height: 1;
+
 background: linear-gradient(135deg, #F0EBE1 0%, var(--gold) 50%, var(--ember) 100%);
+
 -webkit-background-clip: text;
+
 -webkit-text-fill-color: transparent;
+
 background-clip: text;
+
 }
+
+
 
 .logo-sub {
+
 font-size: 9px;
+
 letter-spacing: 0.35em;
+
 text-transform: uppercase;
+
 color: var(--gold);
+
 font-weight: 500;
+
 }
+
+
 
 .logo-divider {
+
 width: 40px;
+
 height: 1px;
+
 background: linear-gradient(90deg, transparent, var(--gold), transparent);
+
 margin: 6px auto;
+
 }
 
+
+
 .phone-btn {
+
 display: inline-flex;
+
 align-items: center;
+
 gap: 6px;
+
 background: var(--ember);
+
 color: white;
+
 text-decoration: none;
+
 font-size: 11px;
+
 font-weight: 600;
+
 letter-spacing: 0.08em;
+
 padding: 7px 18px;
+
 border-radius: 50px;
+
 margin-top: 8px;
+
 transition: background 0.2s;
+
 }
+
+
 
 .phone-btn:hover { background: var(--ember-light); }
 
+
+
 /* ─── NAV PILLS ─── */
+
 .nav-scroll {
+
 display: flex;
+
 gap: 8px;
+
 overflow-x: auto;
+
 padding: 10px 16px 12px;
+
 scrollbar-width: none;
+
 }
+
 .nav-scroll::-webkit-scrollbar { display: none; }
 
+
+
 .nav-pill {
+
 flex-shrink: 0;
+
 padding: 6px 16px;
+
 border-radius: 50px;
+
 font-size: 12px;
+
 font-weight: 600;
+
 text-decoration: none;
+
 border: 1px solid var(--border-warm);
+
 color: var(--text-muted);
+
 background: transparent;
+
 transition: all 0.2s;
+
 letter-spacing: 0.03em;
+
 text-transform: uppercase;
+
 }
+
+
 
 .nav-pill:hover, .nav-pill.active {
+
 background: var(--ember);
+
 border-color: var(--ember);
+
 color: white;
+
 }
+
+
 
 /* ─── MAIN ─── */
+
 main {
+
 max-width: 640px;
+
 margin: 0 auto;
+
 padding: 24px 16px 80px;
+
 position: relative;
+
 z-index: 1;
+
 }
+
+
+
+/* ─── SECTION TITLE ─── */
 
 .section-title {
+
 display: flex;
+
 align-items: center;
+
 gap: 12px;
+
 margin-bottom: 20px;
+
 }
+
+
 
 .section-title h2 {
+
 font-family: 'Playfair Display', serif;
+
 font-size: 22px;
+
 font-weight: 700;
+
 font-style: italic;
+
 color: var(--text-primary);
+
 letter-spacing: -0.3px;
+
 }
+
+
 
 .section-line {
+
 flex: 1;
+
 height: 1px;
+
 background: linear-gradient(90deg, var(--border-warm), transparent);
+
 }
+
+
 
 .section-accent {
+
 width: 3px;
+
 height: 24px;
+
 background: var(--ember);
+
 border-radius: 2px;
+
 flex-shrink: 0;
+
 }
 
-section { scroll-margin-top: 130px; margin-bottom: 40px; animation: fadeUp 0.5s ease both; }
+
+
+section { scroll-margin-top: 130px; margin-bottom: 40px; }
+
+
 
 /* ─── GRILL PLATTERS ─── */
+
 .platter-grid { display: grid; gap: 12px; }
+
+
+
 .platter-card {
+
 background: linear-gradient(135deg, var(--ash) 0%, var(--smoke) 100%);
+
 border: 1px solid var(--border-warm);
+
 border-radius: 16px;
+
 padding: 18px 20px;
+
 display: flex;
+
 justify-content: space-between;
+
 align-items: flex-start;
+
 gap: 16px;
+
 position: relative;
+
 overflow: hidden;
+
 transition: transform 0.2s, border-color 0.2s;
+
 }
+
+
+
 .platter-card::before {
+
 content: '';
+
 position: absolute;
+
 top: 0; left: 0; right: 0;
+
 height: 2px;
+
 background: linear-gradient(90deg, var(--ember), transparent);
+
 }
+
+
+
 .platter-card:hover { transform: translateY(-2px); border-color: var(--gold-dim); }
+
 .platter-card.featured { border-color: rgba(212,80,26,0.4); }
 
+.platter-card.featured::before { background: linear-gradient(90deg, var(--gold), var(--ember)); }
+
+
+
 .platter-name {
+
 font-weight: 700;
+
 font-size: 14px;
+
 text-transform: uppercase;
+
 letter-spacing: 0.05em;
+
 color: var(--text-primary);
+
 margin-bottom: 5px;
+
 }
+
+
 
 .platter-desc {
+
 font-size: 12px;
+
 color: var(--text-muted);
+
 line-height: 1.5;
+
 font-style: italic;
+
 }
+
+
 
 .platter-price {
+
 font-family: 'Playfair Display', serif;
+
 font-size: 22px;
+
 font-weight: 700;
+
 color: var(--ember);
+
 white-space: nowrap;
+
 flex-shrink: 0;
+
 }
 
-.cat-badge {
-display: inline-block;
-font-size: 9px;
-font-weight: 700;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-color: var(--ember);
-background: var(--ember-glow);
-padding: 3px 10px;
-border-radius: 50px;
-margin-bottom: 16px;
+
+
+/* ─── CHEF'S SPECIALS — Dark panel ─── */
+
+.chef-panel {
+
+background: var(--ash);
+
+border: 1px solid var(--border-warm);
+
+border-radius: 20px;
+
+overflow: hidden;
+
 }
+
+
+
+.chef-header {
+
+background: linear-gradient(135deg, var(--ember) 0%, #A03010 100%);
+
+padding: 16px 20px;
+
+display: flex;
+
+align-items: center;
+
+gap: 10px;
+
+}
+
+
+
+.chef-header-icon { font-size: 20px; }
+
+
+
+.chef-header h2 {
+
+font-family: 'Playfair Display', serif;
+
+font-size: 18px;
+
+font-style: italic;
+
+font-weight: 700;
+
+color: white;
+
+}
+
+
+
+.chef-items { padding: 8px 0; }
+
+
+
+.chef-item {
+
+padding: 14px 20px;
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: flex-start;
+
+gap: 16px;
+
+border-bottom: 1px solid var(--border);
+
+transition: background 0.15s;
+
+}
+
+
+
+.chef-item:last-child { border-bottom: none; }
+
+.chef-item:hover { background: rgba(255,255,255,0.03); }
+
+
+
+.chef-item-name {
+
+font-weight: 600;
+
+font-size: 13px;
+
+text-transform: uppercase;
+
+letter-spacing: 0.04em;
+
+margin-bottom: 4px;
+
+}
+
+
+
+.chef-item-desc {
+
+font-size: 11px;
+
+color: var(--text-dim);
+
+font-style: italic;
+
+line-height: 1.4;
+
+}
+
+
+
+.chef-item-price {
+
+font-family: 'Playfair Display', serif;
+
+font-size: 20px;
+
+color: var(--gold);
+
+white-space: nowrap;
+
+flex-shrink: 0;
+
+}
+
+
+
+/* ─── STANDARD LIST ─── */
 
 .menu-list { display: flex; flex-direction: column; gap: 0; }
+
+
+
 .menu-item {
+
 display: flex;
+
 justify-content: space-between;
+
 align-items: flex-start;
+
 gap: 16px;
+
 padding: 14px 0;
+
 border-bottom: 1px solid var(--border);
+
+transition: background 0.15s;
+
 }
+
+
+
+.menu-item:last-child { border-bottom: none; }
+
+
+
 .menu-item-name {
+
 font-size: 13px;
+
 font-weight: 600;
+
 text-transform: uppercase;
+
 letter-spacing: 0.04em;
+
 margin-bottom: 3px;
+
 }
+
+
+
+.menu-item-desc {
+
+font-size: 11px;
+
+color: var(--text-dim);
+
+font-style: italic;
+
+line-height: 1.4;
+
+}
+
+
+
 .menu-item-price {
+
 font-family: 'Playfair Display', serif;
+
 font-size: 18px;
+
 color: var(--ember);
+
 white-space: nowrap;
+
+flex-shrink: 0;
+
 }
+
+
+
+/* ─── PIZZA GRID ─── */
+
+.pizza-grid {
+
+display: grid;
+
+grid-template-columns: 1fr 1fr;
+
+gap: 10px;
+
+}
+
+
+
+.pizza-card {
+
+background: var(--ash);
+
+border: 1px solid var(--border);
+
+border-radius: 14px;
+
+padding: 14px 16px;
+
+transition: border-color 0.2s, transform 0.2s;
+
+}
+
+
+
+.pizza-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+
+.pizza-card.special { border-color: rgba(212,80,26,0.3); grid-column: span 2; background: linear-gradient(135deg, var(--smoke) 0%, var(--ash) 100%); }
+
+
+
+.pizza-card-name {
+
+font-size: 12px;
+
+font-weight: 700;
+
+text-transform: uppercase;
+
+letter-spacing: 0.05em;
+
+margin-bottom: 4px;
+
+}
+
+
+
+.pizza-card-desc {
+
+font-size: 10px;
+
+color: var(--text-dim);
+
+font-style: italic;
+
+line-height: 1.4;
+
+margin-bottom: 10px;
+
+}
+
+
+
+.pizza-card-price {
+
+font-family: 'Playfair Display', serif;
+
+font-size: 20px;
+
+color: var(--ember);
+
+}
+
+
+
+.pizza-card.special .pizza-card-price { color: var(--gold); }
+
+
+
+/* ─── PASTE TABLE ─── */
+
+.paste-list {
+
+background: var(--ash);
+
+border-radius: 16px;
+
+overflow: hidden;
+
+border: 1px solid var(--border-warm);
+
+}
+
+
+
+.paste-item {
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: flex-start;
+
+padding: 13px 18px;
+
+border-bottom: 1px solid var(--border);
+
+gap: 16px;
+
+}
+
+
+
+.paste-item:last-child { border-bottom: none; }
+
+
+
+.paste-item-name {
+
+font-size: 13px;
+
+font-weight: 600;
+
+text-transform: uppercase;
+
+letter-spacing: 0.03em;
+
+margin-bottom: 3px;
+
+}
+
+
+
+.paste-item-desc {
+
+font-size: 10px;
+
+color: var(--text-dim);
+
+font-style: italic;
+
+}
+
+
+
+.paste-item-price {
+
+font-family: 'Playfair Display', serif;
+
+font-size: 18px;
+
+color: var(--gold);
+
+white-space: nowrap;
+
+flex-shrink: 0;
+
+}
+
+
+
+/* ─── SALATE GRID ─── */
+
+.salate-grid { display: grid; gap: 10px; }
+
+
+
+.salata-card {
+
+background: var(--ash);
+
+border: 1px solid var(--border);
+
+border-radius: 14px;
+
+padding: 14px 16px;
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: flex-start;
+
+gap: 12px;
+
+transition: border-color 0.2s;
+
+}
+
+
+
+.salata-card:hover { border-color: var(--gold-dim); }
+
+
+
+/* ─── SMALL SIDES GRID ─── */
+
+.sides-grid {
+
+display: grid;
+
+grid-template-columns: 1fr 1fr;
+
+gap: 8px;
+
+}
+
+
+
+.side-item {
+
+background: var(--ash);
+
+border: 1px solid var(--border);
+
+border-radius: 10px;
+
+padding: 10px 14px;
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+gap: 8px;
+
+}
+
+
+
+.side-item-name { font-size: 11px; font-weight: 500; color: var(--text-muted); }
+
+.side-item-price { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--ember); white-space: nowrap; }
+
+
+
+/* ─── DRINKS ─── */
+
+.drinks-section { margin-bottom: 24px; }
+
+
+
+.drinks-subtitle {
+
+font-size: 10px;
+
+letter-spacing: 0.2em;
+
+text-transform: uppercase;
+
+color: var(--gold);
+
+font-weight: 600;
+
+margin-bottom: 12px;
+
+padding-bottom: 8px;
+
+border-bottom: 1px solid var(--border-warm);
+
+}
+
+
+
+.drink-row {
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+padding: 10px 0;
+
+border-bottom: 1px solid var(--border);
+
+gap: 12px;
+
+}
+
+
+
+.drink-row:last-child { border-bottom: none; }
+
+.drink-name { font-size: 12px; font-weight: 500; color: var(--text-muted); }
+
+.drink-price { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--text-primary); white-space: nowrap; }
+
+
+
+/* ─── COCKTAIL CARDS ─── */
+
+.cocktail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+
+
+.cocktail-card {
+
+background: linear-gradient(135deg, rgba(212,80,26,0.08) 0%, var(--ash) 100%);
+
+border: 1px solid rgba(212,80,26,0.2);
+
+border-radius: 14px;
+
+padding: 14px;
+
+transition: border-color 0.2s, transform 0.2s;
+
+}
+
+
+
+.cocktail-card:hover { border-color: rgba(212,80,26,0.5); transform: translateY(-2px); }
+
+.cocktail-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+
+.cocktail-desc { font-size: 10px; color: var(--text-dim); font-style: italic; line-height: 1.4; margin-bottom: 10px; }
+
+.cocktail-price { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ember); }
+
+
+
+.non-alc-badge {
+
+display: inline-block;
+
+background: rgba(200,169,110,0.15);
+
+color: var(--gold);
+
+font-size: 9px;
+
+letter-spacing: 0.1em;
+
+text-transform: uppercase;
+
+font-weight: 600;
+
+padding: 2px 8px;
+
+border-radius: 50px;
+
+margin-bottom: 4px;
+
+}
+
+
+
+/* ─── WINE TABLE ─── */
+
+.wine-winery {
+
+background: var(--ash);
+
+border: 1px solid var(--border-warm);
+
+border-radius: 14px;
+
+overflow: hidden;
+
+margin-bottom: 12px;
+
+}
+
+
+
+.wine-winery-header {
+
+background: var(--smoke);
+
+padding: 10px 16px;
+
+font-size: 11px;
+
+font-weight: 700;
+
+letter-spacing: 0.15em;
+
+text-transform: uppercase;
+
+color: var(--gold);
+
+}
+
+
+
+.wine-row {
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+padding: 11px 16px;
+
+border-bottom: 1px solid var(--border);
+
+gap: 12px;
+
+}
+
+
+
+.wine-row:last-child { border-bottom: none; }
+
+.wine-name { font-size: 12px; font-weight: 500; color: var(--text-muted); }
+
+.wine-price { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold); white-space: nowrap; }
+
+
+
+/* ─── DESERT ─── */
+
+.desert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+
+
+.desert-card {
+
+background: linear-gradient(135deg, var(--smoke) 0%, var(--ash) 100%);
+
+border: 1px solid var(--border-warm);
+
+border-radius: 16px;
+
+padding: 18px;
+
+text-align: center;
+
+transition: transform 0.2s, border-color 0.2s;
+
+}
+
+
+
+.desert-card:hover { transform: translateY(-3px); border-color: var(--gold-dim); }
+
+.desert-icon { font-size: 28px; margin-bottom: 8px; }
+
+.desert-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+
+.desert-price { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold); }
+
+
+
+/* ─── MENIU COPII ─── */
+
+.copii-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+
+
+.copii-card {
+
+background: var(--ash);
+
+border: 1px solid var(--border);
+
+border-radius: 14px;
+
+padding: 14px;
+
+text-align: center;
+
+transition: border-color 0.2s;
+
+}
+
+
+
+.copii-card:hover { border-color: var(--gold-dim); }
+
+.copii-icon { font-size: 24px; margin-bottom: 6px; }
+
+.copii-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+
+.copii-desc { font-size: 10px; color: var(--text-dim); font-style: italic; margin-bottom: 8px; }
+
+.copii-price { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ember); }
+
+
+
+/* ─── EXTRAS GRID ─── */
+
+.extras-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+
+.extra-chip {
+
+background: var(--ash);
+
+border: 1px solid var(--border);
+
+border-radius: 10px;
+
+padding: 10px;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+gap: 4px;
+
+text-align: center;
+
+}
+
+.extra-chip-name { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+
+.extra-chip-qty { font-size: 9px; color: var(--text-dim); }
+
+.extra-chip-price { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--gold); }
+
+
+
+/* ─── FOOTER ─── */
+
+footer {
+
+background: var(--ash);
+
+border-top: 1px solid var(--border-warm);
+
+padding: 28px 20px;
+
+text-align: center;
+
+position: relative;
+
+z-index: 1;
+
+}
+
+
+
+.footer-logo {
+
+font-family: 'Playfair Display', serif;
+
+font-size: 24px;
+
+font-weight: 900;
+
+font-style: italic;
+
+background: linear-gradient(135deg, var(--gold), var(--ember));
+
+-webkit-background-clip: text;
+
+-webkit-text-fill-color: transparent;
+
+background-clip: text;
+
+margin-bottom: 8px;
+
+}
+
+
+
+.allergen-box {
+
+background: var(--smoke);
+
+border: 1px solid var(--border);
+
+border-radius: 12px;
+
+padding: 14px 16px;
+
+margin: 16px 0;
+
+text-align: left;
+
+}
+
+
+
+.allergen-title { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+
+.allergen-text { font-size: 10px; color: var(--text-dim); line-height: 1.6; }
+
+
+
+.footer-thanks { font-size: 11px; color: var(--text-dim); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 16px; }
+
+
+
+/* ─── SCROLL ANIMATIONS ─── */
 
 @keyframes fadeUp {
+
 from { opacity: 0; transform: translateY(16px); }
+
 to { opacity: 1; transform: translateY(0); }
+
 }
+
+
+
+section { animation: fadeUp 0.5s ease both; }
+
+
+
+/* ─── CATEGORY BADGE ─── */
+
+.cat-badge {
+
+display: inline-block;
+
+font-size: 9px;
+
+font-weight: 700;
+
+letter-spacing: 0.15em;
+
+text-transform: uppercase;
+
+color: var(--ember);
+
+background: var(--ember-glow);
+
+padding: 3px 10px;
+
+border-radius: 50px;
+
+margin-bottom: 16px;
+
+}
+
 </style>
+
 </head>
+
 <body>
 
+<!-- ═══ MOUNTAIN BACKGROUND ═══ -->
+
 <svg class="mountain-bg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <linearGradient id="sky-fade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#0F0E0C" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#0F0E0C" stop-opacity="0"/>
-        </linearGradient>
-    </defs>
-    <rect x="0" y="0" width="1000" height="700" fill="url(#sky-fade)"/>
-    <path fill="#1A1815" d="M0,700 L0,500 C200,450 400,350 500,400 C600,350 800,450 1000,500 L1000,700 Z"/>
+
+<defs>
+
+<linearGradient id="sky-fade" x1="0" y1="0" x2="0" y2="1">
+
+<stop offset="0%" stop-color="#0F0E0C" stop-opacity="1"/>
+
+<stop offset="28%" stop-color="#0F0E0C" stop-opacity="0.96"/>
+
+<stop offset="52%" stop-color="#0F0E0C" stop-opacity="0.60"/>
+
+<stop offset="78%" stop-color="#0F0E0C" stop-opacity="0.18"/>
+
+<stop offset="100%" stop-color="#0F0E0C" stop-opacity="0"/>
+
+</linearGradient>
+
+<linearGradient id="rock-mid" x1="0" y1="0" x2="0" y2="1">
+
+<stop offset="0%" stop-color="#2E2A24"/>
+
+<stop offset="100%" stop-color="#1A1815"/>
+
+</linearGradient>
+
+<linearGradient id="rock-peak" x1="0.3" y1="0" x2="0.7" y2="1">
+
+<stop offset="0%" stop-color="#3A342C"/>
+
+<stop offset="50%" stop-color="#252118"/>
+
+<stop offset="100%" stop-color="#181512"/>
+
+</linearGradient>
+
+<linearGradient id="rock-fore" x1="0" y1="0" x2="0" y2="1">
+
+<stop offset="0%" stop-color="#141210"/>
+
+<stop offset="100%" stop-color="#080706"/>
+
+</linearGradient>
+
+<clipPath id="mtn-clip">
+
+<rect x="0" y="0" width="1000" height="700"/>
+
+</clipPath>
+
+<filter id="blur-back" x="-5%" y="-5%" width="110%" height="110%">
+
+<feGaussianBlur stdDeviation="1.5"/>
+
+</filter>
+
+</defs>
+
+
+<g clip-path="url(#mtn-clip)">
+
+
+<!-- LAYER 6 — sky glow behind peaks, atmospheric depth -->
+
+<ellipse cx="440" cy="390" rx="280" ry="90" fill="#1E1C17" filter="url(#blur-back)"/>
+
+<ellipse cx="440" cy="390" rx="180" ry="55" fill="#26221C" filter="url(#blur-back)"/>
+
+
+<!-- LAYER 5 — farthest range, barely lighter than sky -->
+
+<path fill="#121110" d="
+
+M0,700 L0,468
+
+C45,460 88,446 128,428
+
+C164,412 196,394 232,376
+
+C265,359 294,346 326,334
+
+C356,323 382,316 412,312
+
+C440,308 464,312 492,320
+
+C518,328 540,340 566,352
+
+C592,364 616,374 644,378
+
+C672,382 696,378 722,368
+
+C748,358 768,344 796,334
+
+C824,324 850,318 880,316
+
+C910,314 936,320 966,330
+
+L1000,340 L1000,700 Z
+
+"/>
+
+<!-- farther peaks accent ridgeline -->
+
+<path fill="none" stroke="#1E1B17" stroke-width="1.5" d="
+
+M80,438 C128,418 172,396 220,374 C262,354 298,336 340,318
+
+C378,302 412,294 448,292 C480,290 510,298 545,312
+
+C578,325 608,342 645,356 C680,368 712,374 748,366
+
+C782,358 810,340 845,326 C878,313 912,306 950,306
+
+"/>
+
+
+<!-- LAYER 4 — distant ridgeline, more visible -->
+
+<path fill="#191714" d="
+
+M0,700 L0,508
+
+C32,500 66,488 100,472
+
+C130,458 155,442 185,426
+
+C213,411 237,398 264,387
+
+C290,377 312,370 338,366
+
+C362,362 383,364 406,370
+
+C428,376 446,386 466,396
+
+C486,406 504,414 526,418
+
+C548,422 568,420 590,412
+
+C612,404 630,392 652,382
+
+C674,372 694,366 718,364
+
+C742,362 764,366 790,374
+
+C816,382 838,394 864,402
+
+C890,410 914,414 944,408
+
+L1000,400 L1000,700 Z
+
+"/>
+
+
+<!-- LAYER 3 — mid mountains, more contrast -->
+
+<path fill="url(#rock-mid)" d="
+
+M0,700 L0,548
+
+C26,540 54,528 84,512
+
+C110,498 132,482 158,466
+
+C182,451 202,438 226,426
+
+C248,415 266,408 288,403
+
+C308,398 326,397 346,401
+
+C364,405 379,413 395,423
+
+C411,433 425,443 442,450
+
+C459,457 475,461 493,459
+
+C511,457 527,449 545,440
+
+C563,431 578,422 595,414
+
+C612,406 628,401 647,400
+
+C666,399 683,402 703,410
+
+C723,418 741,429 761,438
+
+C781,447 800,453 823,454
+
+C846,455 868,450 894,440
+
+C920,430 943,418 969,408
+
+L1000,402 L1000,700 Z
+
+"/>
+
+<!-- mid range ridge detail -->
+
+<path fill="none" stroke="rgba(180,155,100,0.08)" stroke-width="1" d="
+
+M84,512 C132,490 180,468 226,446 C268,425 302,410 340,402
+
+C375,394 406,396 440,410 C472,423 498,440 530,450
+
+C560,459 588,458 620,446 C650,435 676,418 710,410
+
+C742,402 770,404 803,416 C835,428 864,446 900,452
+
+"/>
+
+
+<!-- LAYER 2 — main mountain body -->
+
+<path fill="url(#rock-mid)" d="
+
+M0,700 L0,596
+
+C20,589 44,580 68,568
+
+C88,558 106,546 126,532
+
+C146,518 163,504 181,490
+
+C198,477 213,465 229,454
+
+C245,444 258,436 273,429
+
+C288,422 300,417 314,414
+
+C327,411 338,410 351,412
+
+C363,414 373,419 385,427
+
+C397,435 406,445 417,455
+
+C428,465 438,475 450,483
+
+C462,491 473,496 486,498
+
+C499,500 511,497 524,491
+
+C537,485 547,476 559,467
+
+C571,458 581,450 593,443
+
+C605,436 616,432 629,430
+
+C642,428 653,429 666,433
+
+C679,437 689,445 701,453
+
+C713,461 723,470 736,476
+
+C749,482 761,485 776,483
+
+C791,481 803,474 817,465
+
+C831,456 842,446 856,438
+
+C870,430 883,424 899,421
+
+C915,418 929,418 947,422
+
+L1000,428 L1000,700 Z
+
+"/>
+
+
+<!-- MAIN PEAK — dramatic V-crater summit -->
+
+<path fill="url(#rock-peak)" d="
+
+M170,700 L170,640
+
+C188,630 205,618 223,605
+
+C239,593 253,580 269,566
+
+C283,553 296,540 309,527
+
+C321,515 331,503 341,491
+
+C350,480 357,469 363,459
+
+C369,450 373,442 377,435
+
+C381,428 384,422 387,417
+
+C390,412 392,408 395,405
+
+C398,402 400,400 403,399
+
+C406,398 409,397 413,397
+
+C417,397 421,398 425,399
+
+C429,400 432,402 435,405
+
+C438,408 440,412 443,417
+
+C446,422 449,428 453,435
+
+C457,442 461,450 467,459
+
+C473,469 480,480 489,491
+
+C499,503 509,515 521,527
+
+C534,540 547,553 561,566
+
+C577,580 591,593 607,605
+
+C625,618 642,630 660,640
+
+L660,700 Z
+
+"/>
+
+
+<!-- Left rock spur — big secondary mass left of peak -->
+
+<path fill="#161310" d="
+
+M0,700 L0,650
+
+C16,643 34,635 52,624
+
+C68,614 82,603 98,591
+
+C113,580 126,569 140,558
+
+C153,548 164,539 175,531
+
+C185,524 193,518 202,514
+
+C210,510 217,508 224,508
+
+C231,508 237,511 243,516
+
+C249,521 254,528 259,536
+
+C264,544 268,552 274,560
+
+C280,568 286,575 293,580
+
+C300,585 308,588 317,589
+
+C326,590 334,588 343,583
+
+C352,578 359,571 368,563
+
+C377,555 385,547 395,541
+
+C404,535 413,531 423,530
+
+C433,529 441,531 451,536
+
+C460,541 468,548 477,556
+
+L477,700 Z
+
+"/>
+
+
+<!-- Right rock spur -->
+
+<path fill="#161310" d="
+
+M523,700 L523,556
+
+C532,548 540,541 549,536
+
+C559,531 567,529 577,530
+
+C587,531 596,535 605,541
+
+C615,547 623,555 632,563
+
+C641,571 648,578 657,583
+
+C666,588 674,590 683,589
+
+C692,588 700,585 707,580
+
+C714,575 720,568 726,560
+
+C732,552 736,544 741,536
+
+C746,528 751,521 757,516
+
+C763,511 769,508 776,508
+
+C783,508 790,510 798,514
+
+C807,518 815,524 825,531
+
+C836,539 847,548 860,558
+
+C874,569 887,580 902,591
+
+C918,603 932,614 948,624
+
+C966,635 984,643 1000,650
+
+L1000,700 Z
+
+"/>
+
+
+<!-- Left foreground rock — darkest, closest -->
+
+<path fill="url(#rock-fore)" d="
+
+M0,700 L0,676
+
+C14,670 29,663 45,653
+
+C59,644 71,634 85,623
+
+C98,613 109,603 121,594
+
+C132,586 141,579 151,574
+
+C160,569 167,567 175,567
+
+C182,567 188,570 194,575
+
+C200,580 204,587 209,595
+
+C214,603 218,612 224,619
+
+C230,626 236,632 244,636
+
+C252,640 260,641 270,639
+
+C280,637 288,632 298,625
+
+C308,618 316,610 327,604
+
+C338,598 348,594 360,593
+
+L360,700 Z
+
+"/>
+
+
+<!-- Right foreground rock -->
+
+<path fill="url(#rock-fore)" d="
+
+M640,700 L640,593
+
+C652,594 662,598 673,604
+
+C684,610 692,618 702,625
+
+C712,632 720,637 730,639
+
+C740,641 748,640 756,636
+
+C764,632 770,626 776,619
+
+C782,612 786,603 791,595
+
+C796,587 800,580 806,575
+
+C812,570 818,567 825,567
+
+C833,567 840,569 849,574
+
+C859,579 868,586 879,594
+
+C891,603 902,613 916,623
+
+C930,634 942,644 956,653
+
+C972,663 987,670 1000,676
+
+L1000,700 Z
+
+"/>
+
+
+<!-- Tiny rock teeth on peak flanks — crenellation detail -->
+
+<path fill="#0E0C0A" d="
+
+M309,527 C302,520 296,514 290,510 C284,506 278,504 273,505
+
+C268,506 264,509 261,514 C258,519 257,525 259,531
+
+C261,537 265,542 270,546 C275,540 281,533 288,526 C295,519 302,523 309,527 Z
+
+"/>
+
+<path fill="#0E0C0A" d="
+
+M521,527 C528,523 535,519 542,526 C549,533 555,540 560,546
+
+C565,542 569,537 571,531 C573,525 572,519 569,514
+
+C566,509 562,506 557,505 C552,504 546,506 540,510
+
+C534,514 528,520 521,527 Z
+
+"/>
+
+
+<!-- RIDGE HIGHLIGHT — the golden lit crest (user's version, enhanced) -->
+
+<path fill="none" stroke="rgba(211,195,130,0.85)" stroke-width="1.6"
+
+stroke-linecap="round" stroke-linejoin="round" d="
+
+M269,566
+
+C283,553 296,540 309,527
+
+C321,515 331,503 341,491
+
+C350,480 357,469 363,459
+
+C369,450 373,442 377,435
+
+C381,428 384,422 387,417
+
+C390,412 392,408 395,405
+
+C398,402 400,400 403,399
+
+C406,398 409,397 413,397
+
+C417,397 421,398 425,399
+
+C429,400 432,402 435,405
+
+C438,408 440,412 443,417
+
+C446,422 449,428 453,435
+
+C457,442 461,450 467,459
+
+C473,469 480,480 489,491
+
+C499,503 509,515 521,527
+
+C534,540 547,553 561,566
+
+"/>
+
+<!-- Glow halo behind the ridge line — gives depth -->
+
+<path fill="none" stroke="rgba(200,169,110,0.18)" stroke-width="6"
+
+stroke-linecap="round" stroke-linejoin="round" d="
+
+M280,572
+
+C296,558 310,544 323,531
+
+C336,518 347,505 357,493
+
+C367,481 374,470 380,459
+
+C386,449 390,440 394,432
+
+C398,424 401,417 404,412
+
+C407,407 409,403 412,400
+
+C415,398 418,397 422,397
+
+C426,397 429,398 432,400
+
+C435,403 437,407 440,412
+
+C443,417 446,424 450,432
+
+C454,440 458,449 464,459
+
+C470,470 477,481 487,493
+
+C497,505 508,518 521,531
+
+C534,544 548,558 564,572
+
+"/>
+
+
+<!-- Left flank secondary lit ridge -->
+
+<path fill="none" stroke="rgba(200,169,110,0.22)" stroke-width="0.9"
+
+stroke-linecap="round" d="
+
+M140,558 C153,548 164,539 175,531
+
+C185,524 193,518 202,514
+
+C210,510 217,508 224,508
+
+"/>
+
+<!-- Right flank secondary lit ridge -->
+
+<path fill="none" stroke="rgba(200,169,110,0.22)" stroke-width="0.9"
+
+stroke-linecap="round" d="
+
+M776,508 C783,508 790,510 798,514
+
+C807,518 815,524 825,531
+
+C836,539 847,548 860,558
+
+"/>
+
+
+<!-- Rock texture lines — fine hatching on the main peak faces -->
+
+<g stroke="rgba(255,255,255,0.04)" stroke-width="0.5" fill="none">
+
+<path d="M390,430 C385,445 381,460 378,476 C375,491 374,506 376,520"/>
+
+<path d="M400,418 C396,433 394,448 394,463 C394,478 396,492 400,505"/>
+
+<path d="M413,410 C412,425 413,440 415,455 C417,469 421,482 426,494"/>
+
+<path d="M426,412 C428,427 431,442 435,457 C439,471 444,484 450,496"/>
+
+<path d="M440,418 C443,433 447,448 452,463 C457,477 463,490 470,501"/>
+
+<path d="M452,428 C456,443 461,458 467,472 C473,486 480,498 488,508"/>
+
+</g>
+
+
+<!-- SKY FADE -->
+
+<rect x="0" y="0" width="1000" height="700" fill="url(#sky-fade)"/>
+
+
+</g>
+
 </svg>
 
-<div class="wait-banner">
-    <span class="ro">⏳ Timp de așteptare: 15 – 50 min &nbsp;·&nbsp; Preparate proaspete</span>
-    <span class="en">⏳ Waiting time: 15 – 50 min &nbsp;·&nbsp; Freshly prepared</span>
-    <span class="hu">⏳ Várakozási idő: 15 – 50 perc &nbsp;·&nbsp; Frissen készített</span>
-</div>
+<div class="wait-banner">⏳ Timp de așteptare: 15 – 50 min &nbsp;·&nbsp; Preparate proaspete la comandă</div>
+
+
 
 <header>
-    <div class="header-top">
-        <div class="lang-switcher">
-            <button id="btn-ro" class="lang-btn active" onclick="changeLanguage('ro')">RO</button>
-            <button id="btn-en" class="lang-btn" onclick="changeLanguage('en')">EN</button>
-            <button id="btn-hu" class="lang-btn" onclick="changeLanguage('hu')">HU</button>
-        </div>
 
-        <div class="logo-badge">
-            <span class="logo-main">La Crater</span>
-            <div class="logo-divider"></div>
-            <span class="logo-sub">Bar &amp; Bistro by Rezident's</span>
-        </div>
-        <br>
-        <a href="tel:0772239588" class="phone-btn">📞 <span class="ro">Rezervări</span><span class="en">Reservations</span><span class="hu">Foglalás</span>: 0772 239 588</a>
-    </div>
-    <nav class="nav-scroll">
-        <a href="#grill" class="nav-pill active"><span class="ro">🔥 Grill</span><span class="en">🔥 Grill</span><span class="hu">🔥 Grill</span></a>
-        <a href="#specialitati" class="nav-pill"><span class="ro">👨‍🍳 Specialități</span><span class="en">👨‍🍳 Specials</span><span class="hu">👨‍🍳 Specialitások</span></a>
-        <a href="#pui" class="nav-pill"><span class="ro">🍗 Pui</span><span class="en">🍗 Chicken</span><span class="hu">🍗 Csirke</span></a>
-        <a href="#pizza" class="nav-pill">🍕 Pizza</a>
-    </nav>
+<div class="header-top">
+
+<div class="logo-badge">
+
+<span class="logo-main">La Crater</span>
+
+<div class="logo-divider"></div>
+
+<span class="logo-sub">Bar &amp; Bistro by Rezident's</span>
+
+</div>
+
+<br>
+
+<a href="tel:0772239588" class="phone-btn">📞 Rezervări: 0772 239 588</a>
+
+</div>
+
+<nav class="nav-scroll">
+
+<a href="#grill" class="nav-pill active">🔥 Grill</a>
+
+<a href="#specialitati" class="nav-pill">👨‍🍳 Specialități</a>
+
+<a href="#pui" class="nav-pill">🍗 Pui</a>
+
+<a href="#pizza" class="nav-pill">🍕 Pizza</a>
+
+<a href="#paste" class="nav-pill">🍝 Paste</a>
+
+<a href="#ciorbe" class="nav-pill">🥣 Ciorbe</a>
+
+<a href="#salate" class="nav-pill">🥗 Salate</a>
+
+<a href="#copii" class="nav-pill">🧒 Copii</a>
+
+<a href="#garnituri" class="nav-pill">🥔 Garnituri</a>
+
+<a href="#desert" class="nav-pill">🍰 Desert</a>
+
+<a href="#bauturi" class="nav-pill">🍹 Băuturi</a>
+
+</nav>
+
 </header>
 
+
+
 <main>
-    <section id="grill">
-        <div class="section-title">
-            <div class="section-accent"></div>
-            <h2>
-                <span class="ro">Platouri Grill</span>
-                <span class="en">Grill Platters</span>
-                <span class="hu">Grill Tálak</span>
-            </h2>
-            <div class="section-line"></div>
-        </div>
 
-        <div class="platter-grid">
-            <div class="platter-card">
-                <div>
-                    <div class="platter-name">Family Grill</div>
-                    <div class="platter-desc">
-                        <span class="ro">ceafă, piept de pui, aripi picante, caș pane, cartofi, sos</span>
-                        <span class="en">pork neck, chicken breast, spicy wings, fried cheese, potatoes, sauce</span>
-                        <span class="hu">sertés tarja, csirkemell, csípős szárnyak, rántott sajt, burgonya, szósz</span>
-                    </div>
-                </div>
-                <div class="platter-price">112 lei</div>
-            </div>
 
-            <div class="platter-card featured">
-                <div>
-                    <div class="platter-name">La Crater's Grill</div>
-                    <div class="platter-desc">
-                        <span class="ro">ceafă, cotlet, piept de pui, aripi, mici (4), cartofi, sos</span>
-                        <span class="en">pork neck, pork chop, chicken breast, wings, "mici" (4), potatoes, sauce</span>
-                        <span class="hu">tarja, karaj, csirkemell, szárnyak, mici (4), burgonya, szósz</span>
-                    </div>
-                </div>
-                <div class="platter-price">175 lei</div>
-            </div>
-        </div>
 
-        <div style="margin-top:24px;">
-            <div class="cat-badge">
-                <span class="ro">Grill — bucăți</span>
-                <span class="en">Grill — pieces</span>
-                <span class="hu">Grill — darabok</span>
-            </div>
-            <div class="menu-list">
-                <div class="menu-item">
-                    <div class="menu-item-name">
-                        <span class="ro">Ceafă porc</span>
-                        <span class="en">Pork neck</span>
-                        <span class="hu">Sertés tarja</span>
-                    </div>
-                    <div class="menu-item-price">32 lei</div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+<!-- ══════════════ PLATOURI GRILL ══════════════ -->
 
-<script>
-function changeLanguage(lang) {
-    // Schimbă clasa pe body
-    document.body.className = document.body.className.replace(/lang-\w+/g, '').trim();
-    if (lang !== 'ro') {
-        document.body.classList.add('lang-' + lang);
-    }
+<section id="grill">
 
-    // Update butoane active
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById('btn-' + lang).classList.add('active');
+<div class="section-title">
 
-    // Salvează preferința
-    localStorage.setItem('selectedLang', lang);
-}
+<div class="section-accent"></div>
 
-// Încarcă limba salvată
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('selectedLang') || 'ro';
-    changeLanguage(savedLang);
-});
-</script>
+<h2>Platouri Grill</h2>
 
-</body>
-</html>
+<div class="section-line"></div>
+
+</div>
+
+<div class="platter-grid">
+
+<div class="platter-card">
+
+<div>
+
+<div class="platter-name">Family Grill</div>
+
+<div class="platter-desc">ceafă, piept de pui, aripi picante, caș pane, cartofi, sos</div>
+
+</div>
+
+<div class="platter-price">112 lei</div>
+
+</div>
+
+<div class="platter-card featured">
+
+<div>
+
+<div class="platter-name">La Crater's Grill</div>
+
+<div class="platter-desc">ceafă, cotlet, piept de pui, aripi, caș pane, mici (4), cartofi, sos</div>
+
+</div>
+
+<div class="platter-price">175 lei</div>
+
+</div>
+
+<div class="platter-card">
+
+<div>
+
+<div class="platter-name">Mix Grill</div>
+
+<div class="platter-desc">ceafă, piept de pui, mici (2), cârnaț, cartofi, sos</div>
+
+</div>
+
+<div class="platter-price">112 lei</div>
+
+</div>
+
+</div>
+
+
+
+<div style="margin-top:16px;">
+
+<div class="cat-badge">Grill — bucăți</div>
+
+<div class="menu-list">
+
+<div class="menu-item"><div><div class="menu-item-name">Ceafă porc</div></div><div class="menu-item-price">32 lei</div></div>
