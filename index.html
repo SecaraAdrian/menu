@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Crater — Bar & Bistro</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -216,7 +215,7 @@
     flex-shrink: 0;
   }
 
-  section { scroll-margin-top: 130px; margin-bottom: 40px; }
+  section { scroll-margin-top: 0px; margin-bottom: 40px; }
 
   /* ─── GRILL PLATTERS ─── */
   .platter-grid { display: grid; gap: 12px; }
@@ -692,9 +691,45 @@
     border-radius: 50px;
     margin-bottom: 16px;
   }
+
+  /* ─── LANGUAGE SWITCHER ─── */
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid var(--border-warm);
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1.4;
+  }
+  .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--coal);
+  }
+  .lang-sep {
+    width: 1px;
+    height: 12px;
+    background: var(--border-warm);
+  }
 </style>
 </head>
 <body>
+
 <!-- ═══ MOUNTAIN BACKGROUND ═══ -->
 <svg class="mountain-bg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -725,13 +760,13 @@
       <feGaussianBlur stdDeviation="1.5"/>
     </filter>
   </defs>
- 
+
   <g clip-path="url(#mtn-clip)">
- 
+
     <!-- LAYER 6 — sky glow behind peaks, atmospheric depth -->
     <ellipse cx="440" cy="390" rx="280" ry="90" fill="#1E1C17" filter="url(#blur-back)"/>
     <ellipse cx="440" cy="390" rx="180" ry="55" fill="#26221C" filter="url(#blur-back)"/>
- 
+
     <!-- LAYER 5 — farthest range, barely lighter than sky -->
     <path fill="#121110" d="
       M0,700 L0,468
@@ -755,7 +790,7 @@
       C578,325 608,342 645,356 C680,368 712,374 748,366
       C782,358 810,340 845,326 C878,313 912,306 950,306
     "/>
- 
+
     <!-- LAYER 4 — distant ridgeline, more visible -->
     <path fill="#191714" d="
       M0,700 L0,508
@@ -774,7 +809,7 @@
       C890,410 914,414 944,408
       L1000,400 L1000,700 Z
     "/>
- 
+
     <!-- LAYER 3 — mid mountains, more contrast -->
     <path fill="url(#rock-mid)" d="
       M0,700 L0,548
@@ -803,7 +838,7 @@
       C560,459 588,458 620,446 C650,435 676,418 710,410
       C742,402 770,404 803,416 C835,428 864,446 900,452
     "/>
- 
+
     <!-- LAYER 2 — main mountain body -->
     <path fill="url(#rock-mid)" d="
       M0,700 L0,596
@@ -832,7 +867,7 @@
       C915,418 929,418 947,422
       L1000,428 L1000,700 Z
     "/>
- 
+
     <!-- MAIN PEAK — dramatic V-crater summit -->
     <path fill="url(#rock-peak)" d="
       M170,700 L170,640
@@ -858,7 +893,7 @@
       C625,618 642,630 660,640
       L660,700 Z
     "/>
- 
+
     <!-- Left rock spur — big secondary mass left of peak -->
     <path fill="#161310" d="
       M0,700 L0,650
@@ -881,7 +916,7 @@
       C460,541 468,548 477,556
       L477,700 Z
     "/>
- 
+
     <!-- Right rock spur -->
     <path fill="#161310" d="
       M523,700 L523,556
@@ -904,7 +939,7 @@
       C966,635 984,643 1000,650
       L1000,700 Z
     "/>
- 
+
     <!-- Left foreground rock — darkest, closest -->
     <path fill="url(#rock-fore)" d="
       M0,700 L0,676
@@ -923,7 +958,7 @@
       C338,598 348,594 360,593
       L360,700 Z
     "/>
- 
+
     <!-- Right foreground rock -->
     <path fill="url(#rock-fore)" d="
       M640,700 L640,593
@@ -942,7 +977,7 @@
       C972,663 987,670 1000,676
       L1000,700 Z
     "/>
- 
+
     <!-- Tiny rock teeth on peak flanks — crenellation detail -->
     <path fill="#0E0C0A" d="
       M309,527 C302,520 296,514 290,510 C284,506 278,504 273,505
@@ -955,7 +990,7 @@
       C566,509 562,506 557,505 C552,504 546,506 540,510
       C534,514 528,520 521,527 Z
     "/>
- 
+
     <!-- RIDGE HIGHLIGHT — the golden lit crest (user's version, enhanced) -->
     <path fill="none" stroke="rgba(211,195,130,0.85)" stroke-width="1.6"
           stroke-linecap="round" stroke-linejoin="round" d="
@@ -996,7 +1031,7 @@
       C497,505 508,518 521,531
       C534,544 548,558 564,572
     "/>
- 
+
     <!-- Left flank secondary lit ridge -->
     <path fill="none" stroke="rgba(200,169,110,0.22)" stroke-width="0.9"
           stroke-linecap="round" d="
@@ -1011,7 +1046,7 @@
       C807,518 815,524 825,531
       C836,539 847,548 860,558
     "/>
- 
+
     <!-- Rock texture lines — fine hatching on the main peak faces -->
     <g stroke="rgba(255,255,255,0.04)" stroke-width="0.5" fill="none">
       <path d="M390,430 C385,445 381,460 378,476 C375,491 374,506 376,520"/>
@@ -1021,12 +1056,13 @@
       <path d="M440,418 C443,433 447,448 452,463 C457,477 463,490 470,501"/>
       <path d="M452,428 C456,443 461,458 467,472 C473,486 480,498 488,508"/>
     </g>
- 
+
     <!-- SKY FADE -->
     <rect x="0" y="0" width="1000" height="700" fill="url(#sky-fade)"/>
- 
+
   </g>
 </svg>
+
 <div class="wait-banner">⏳ Timp de așteptare: 15 – 50 min &nbsp;·&nbsp; Preparate proaspete la comandă</div>
 
 <header>
@@ -1038,6 +1074,13 @@
     </div>
     <br>
     <a href="tel:0772239588" class="phone-btn">📞 Rezervări: 0772 239 588</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ro')" id="btn-ro">RO</button>
+      <div class="lang-sep"></div>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+      <div class="lang-sep"></div>
+      <button class="lang-btn" onclick="setLang('hu')" id="btn-hu">HU</button>
+    </div>
   </div>
   <nav class="nav-scroll">
     <a href="#grill"        class="nav-pill active">🔥 Grill</a>
@@ -1067,21 +1110,21 @@
       <div class="platter-card">
         <div>
           <div class="platter-name">Family Grill</div>
-          <div class="platter-desc">ceafă, piept de pui, aripi picante, caș pane, cartofi, sos</div>
+          <div class="platter-desc">ceafă, piept, aripi picante, caș pane, cartofi, sos</div>
         </div>
         <div class="platter-price">112 lei</div>
       </div>
       <div class="platter-card featured">
         <div>
           <div class="platter-name">La Crater's Grill</div>
-          <div class="platter-desc">ceafă, cotlet, piept de pui, aripi, caș pane, mici (4), cartofi, sos</div>
+          <div class="platter-desc">ceafă, cotlet, piept, aripi, caș pane, mici (4), cartofi, sos</div>
         </div>
         <div class="platter-price">175 lei</div>
       </div>
       <div class="platter-card">
         <div>
           <div class="platter-name">Mix Grill</div>
-          <div class="platter-desc">ceafă, piept de pui, mici (2), cârnaț, cartofi, sos</div>
+          <div class="platter-desc">ceafă, piept, mici (2), cârnaț, cartofi, sos</div>
         </div>
         <div class="platter-price">112 lei</div>
       </div>
@@ -1093,7 +1136,7 @@
         <div class="menu-item"><div><div class="menu-item-name">Ceafă porc</div></div><div class="menu-item-price">32 lei</div></div>
         <div class="menu-item"><div><div class="menu-item-name">Cotlet porc</div></div><div class="menu-item-price">32 lei</div></div>
         <div class="menu-item"><div><div class="menu-item-name">Piept de pui</div></div><div class="menu-item-price">32 lei</div></div>
-        <div class="menu-item"><div><div class="menu-item-name">Mititei (4 mici + cartofi pai + muștar + pâine)</div></div><div class="menu-item-price">35 lei</div></div>
+        <div class="menu-item"><div><div class="menu-item-name">Mititei (4 mici + pai + muștar + pâine)</div></div><div class="menu-item-price">35 lei</div></div>
         <div class="menu-item"><div><div class="menu-item-name">Pulpă dezosată</div></div><div class="menu-item-price">30 lei</div></div>
       </div>
     </div>
@@ -1110,7 +1153,7 @@
         <div class="chef-item">
           <div>
             <div class="chef-item-name">Ceafă Țigănească</div>
-            <div class="chef-item-desc">ceafă de porc, condimente, ou, slănină, ceapă, ardei, sos tomate, usturoi</div>
+            <div class="chef-item-desc">ceafă, condimente, ou, slănină, ceapă, ardei, sos tomate, usturoi</div>
           </div>
           <div class="chef-item-price">44 lei</div>
         </div>
@@ -1123,28 +1166,28 @@
         <div class="chef-item">
           <div>
             <div class="chef-item-name">Șnițel La Crater</div>
-            <div class="chef-item-desc">șnițel de pui, ceapă, ardei, sos, roșii, bacon, cheddar, parmezan, cartofi aurii</div>
+            <div class="chef-item-desc">șnițel pui, ceapă, ardei, sos, roșii, bacon, cheddar, parmezan, cartofi aurii</div>
           </div>
           <div class="chef-item-price">58 lei</div>
         </div>
         <div class="chef-item">
           <div>
             <div class="chef-item-name">Ciolan cu fasole și ceapă</div>
-            <div class="chef-item-desc">ciolan de porc, fasole, ceapă, ardei, sos de roșii, condiment, ceapă murată</div>
+            <div class="chef-item-desc">ciolan, fasole, ceapă, ardei, sos roșii, condiment, ceapă murată</div>
           </div>
           <div class="chef-item-price">59 lei</div>
         </div>
         <div class="chef-item">
           <div>
             <div class="chef-item-name">Scăricică cu sos BBQ</div>
-            <div class="chef-item-desc">scăricică de porc, sos barbeque, condimente</div>
+            <div class="chef-item-desc">scăricică porc, bbq, condimente</div>
           </div>
           <div class="chef-item-price">50 lei</div>
         </div>
         <div class="chef-item">
           <div>
-            <div class="chef-item-name">Burger House La Crater</div>
-            <div class="chef-item-desc">pastilă vită/porc, chiflă burger, sos, roșii, ceapă, castraveți murați,salata iceberg, sos cheddar, cartofi pai</div>
+            <div class="chef-item-name">Burger House La Crater (350g)</div>
+            <div class="chef-item-desc">pastilă vită/porc, chiflă burger, sos, roșii, ceapă, castraveți murați, iceberg, sos cheddar, cartofi pai</div>
           </div>
           <div class="chef-item-price">47 lei</div>
         </div>
@@ -1177,14 +1220,14 @@
       <div class="menu-item">
         <div>
           <div class="menu-item-name">Escalop</div>
-          <div class="menu-item-desc">piept de pui, condimente, usturoi, ciuperci, smântână de gătit</div>
+          <div class="menu-item-desc">piept, condimente, usturoi, ciuperci, smântână gătit</div>
         </div>
         <div class="menu-item-price">42 lei</div>
       </div>
       <div class="menu-item">
         <div>
           <div class="menu-item-name">Aripi picante</div>
-          <div class="menu-item-desc">aripioare, chilli, condimente, bbq</div>
+          <div class="menu-item-desc">aripioare, chili, condimente, bbq</div>
         </div>
         <div class="menu-item-price">29 lei</div>
       </div>
@@ -1201,82 +1244,82 @@
     <div class="pizza-grid">
       <div class="pizza-card">
         <div class="pizza-card-name">Margherita</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, mozzarella</div>
         <div class="pizza-card-price">30 lei</div>
-      </div>
-       <div class="pizza-card">
-        <div class="pizza-card-name">Crudo</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro,prosciutto crudo, rucola, mozzarella, otet balsamic</div>
-        <div class="pizza-card-price">37 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Prosciutto Cotto</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, șuncă, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, șuncă, mozzarella</div>
         <div class="pizza-card-price">36 lei</div>
       </div>
       <div class="pizza-card">
-        <div class="pizza-card-name">Prosciutto Cotto &amp; Funghi</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, șuncă, ciuperci, mozzarella</div>
+        <div class="pizza-card-name">Pr. Cotto &amp; Funghi</div>
+        <div class="pizza-card-desc">sos pomodoro, șuncă, ciuperci, mozzarella</div>
         <div class="pizza-card-price">37 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Salami</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, salam, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, salam, mozzarella</div>
         <div class="pizza-card-price">35 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Kinder</div>
-        <div class="pizza-card-desc">blat pizza.sos pomodoro, șuncă, porumb, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, șuncă, porumb, mozzarella</div>
         <div class="pizza-card-price">35 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Quatro Stagioni</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, șuncă, ciuperci, porumb, măsline, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, șuncă, ciuperci, porumb, măsline, mozzarella</div>
         <div class="pizza-card-price">40 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Diavola</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, salam picant, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, salam picant, mozzarella</div>
         <div class="pizza-card-price">35 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Carbonara</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, bacon, mozzarella, gălbenuș de ou, parmezan, smântână de gatit</div>
+        <div class="pizza-card-desc">sos pomodoro, bacon, mozzarella, gălbenuș ou, parmezan, smântână</div>
+        <div class="pizza-card-price">37 lei</div>
+      </div>
+      <div class="pizza-card">
+        <div class="pizza-card-name">Crudo</div>
+        <div class="pizza-card-desc">sos pomodoro, prosciutto crudo, rucola, mozzarella, oțet balsamic</div>
         <div class="pizza-card-price">37 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Mortadella e Burrata</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, mortadella, pesto, roșii cherry, burrata</div>
-        <div class="pizza-card-price">37 lei</div>
+        <div class="pizza-card-desc">sos pomodoro, mortadella, pesto, roșii cherry, burrata</div>
+        <div class="pizza-card-price">41 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Diavola con Gorgonzola</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, salam picant, gorgonzola, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, salam picant, gorgonzola, mozzarella</div>
         <div class="pizza-card-price">39 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Capriciosa</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, șuncă, cârnaț, ciuperci, măsline, anghinare, mozzarella</div>
-        <div class="pizza-card-price">35 lei</div>
+        <div class="pizza-card-desc">sos pomodoro, șuncă, cârnaț, ciuperci, măsline, anghinare, mozzarella</div>
+        <div class="pizza-card-price">41 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Americana</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, șuncă, cârnaț, porumb, cartofi prăjiți, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, șuncă, cârnaț, porumb, cartofi prăjiți, mozzarella</div>
         <div class="pizza-card-price">41 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Rustica</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, bacon, cârnaț, ceapă roșie, gogosari, telemea, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, bacon, cârnaț, ceapă roșie, gogonele, telemea, mozzarella</div>
         <div class="pizza-card-price">41 lei</div>
       </div>
       <div class="pizza-card">
         <div class="pizza-card-name">Quatro Formagi</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, gorgonzola, cașcaval afumat, parmezan, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, gorgonzola, cașcaval afumat, parmezan, mozzarella</div>
         <div class="pizza-card-price">41 lei</div>
       </div>
       <div class="pizza-card special">
         <div class="pizza-card-name">⭐ La Crater (Specială)</div>
-        <div class="pizza-card-desc">blat pizza,sos pomodoro, șuncă, bacon, salam, ciuperci, măsline, porumb, gogosari, ou, cremă de brânză, mozzarella</div>
+        <div class="pizza-card-desc">sos pomodoro, șuncă, bacon, salam, ciuperci, măsline, porumb, gogonele, ou, cremă de brânză, mozzarella</div>
         <div class="pizza-card-price">48 lei</div>
       </div>
     </div>
@@ -1353,7 +1396,7 @@
       <div class="menu-item">
         <div>
           <div class="menu-item-name">Ciorbă de burtă 400 gr</div>
-          <div class="menu-item-desc">burtă de vită, morcov, piper boabe, usturoi, smântână</div>
+          <div class="menu-item-desc">burtă vită, morcov, piper boabe, usturoi, smântână</div>
         </div>
         <div class="menu-item-price">27 lei</div>
       </div>
@@ -1414,14 +1457,14 @@
       <div class="salata-card">
         <div>
           <div class="menu-item-name">Bon Ton 350 gr</div>
-          <div class="menu-item-desc">mix salată, ton, măsline, porumb, roșii, ceapă, brânză feta</div>
+          <div class="menu-item-desc">mix salată, roșii, castraveți, ceapă, brânză feta, sos rémoulade</div>
         </div>
         <div class="menu-item-price">34 lei</div>
       </div>
       <div class="salata-card">
         <div>
           <div class="menu-item-name">Primavera 350 gr</div>
-          <div class="menu-item-desc">mix salată, roșii, castraveți, ceapă, brânză feta, sos rémoulade</div>
+          <div class="menu-item-desc">mix salată, ton, măsline, porumb, roșii, ceapă, brânză feta</div>
         </div>
         <div class="menu-item-price">34 lei</div>
       </div>
@@ -1432,8 +1475,8 @@
         <div class="side-item"><div class="side-item-name">Salată de varză</div><div class="side-item-price">8 lei</div></div>
         <div class="side-item"><div class="side-item-name">Salată de roșii</div><div class="side-item-price">8 lei</div></div>
         <div class="side-item"><div class="side-item-name">Salată de castraveți</div><div class="side-item-price">8 lei</div></div>
-        <div class="side-item"><div class="side-item-name">Salată asortată / cruditați</div><div class="side-item-price">8 lei</div></div>
-        <div class="side-item"><div class="side-item-name">Salată de ceapă roșie</div><div class="side-item-price">8 lei</div></div>
+        <div class="side-item"><div class="side-item-name">Salată asortată</div><div class="side-item-price">8 lei</div></div>
+        <div class="side-item"><div class="side-item-name">Salată ceapă roșie</div><div class="side-item-price">8 lei</div></div>
         <div class="side-item"><div class="side-item-name">Salată de murături</div><div class="side-item-price">8 lei</div></div>
       </div>
     </div>
@@ -1478,8 +1521,8 @@
     <div class="sides-grid">
       <div class="side-item"><div class="side-item-name">Cartofi prăjiți 200 gr</div><div class="side-item-price">12 lei</div></div>
       <div class="side-item"><div class="side-item-name">Cartofi aurii 200 gr</div><div class="side-item-price">12 lei</div></div>
-      <div class="side-item"><div class="side-item-name">Cartofi cu rozmarin &amp; usturoi</div><div class="side-item-price">15 lei</div></div>
-      <div class="side-item"><div class="side-item-name">Cartofi wedges 200 gr</div><div class="side-item-price">12 lei</div></div>
+      <div class="side-item"><div class="side-item-name">Cartofi rozmarin &amp; usturoi</div><div class="side-item-price">15 lei</div></div>
+      <div class="side-item"><div class="side-item-name">Cartofi weedges 200 gr</div><div class="side-item-price">12 lei</div></div>
       <div class="side-item"><div class="side-item-name">Cartofi piure 200 gr</div><div class="side-item-price">12 lei</div></div>
       <div class="side-item"><div class="side-item-name">Ciuperci sote 200 gr</div><div class="side-item-price">15 lei</div></div>
     </div>
@@ -1505,7 +1548,7 @@
       </div>
       <div class="desert-card">
         <div class="desert-icon">🥞</div>
-        <div class="desert-name">Clătite cu Nutella</div>
+        <div class="desert-name">Clătite cu Nutela</div>
         <div class="desert-price">21 lei</div>
       </div>
       <div class="desert-card">
@@ -1706,14 +1749,14 @@
   <div class="allergen-box">
     <div class="allergen-title">Lista Alergeni — Regulament UE 1169/2011</div>
     <div class="allergen-text">
-      1. Cereale care conțin gluten (grâu, secară, orz, ovăz, grâu spelt, grâu mare) și produse derivate<br>
+      1. Cereale care conțin gluten (grâu, secară, orz, ovăz, grâu spelt, grâu khorasan) și produse derivate<br>
       2. Crustacee și produse derivate<br>
       3. Ouă și produse derivate<br>
       4. Pește și produse derivate<br>
       5. Arahide și produse derivate<br>
       6. Soia și produse derivate<br>
       7. Lapte și produse derivate (inclusiv lactoză)<br>
-      8. Fructe cu coajă  (migdale, alune de pădure,fistic, nuci macadamia, nuci) și produse derivate<br>
+      8. Fructe cu coajă lemnoasă (migdale, alune, caju, nuci, maci) și produse derivate<br>
       9. Țelină și produse derivate<br>
       10. Muștar și produse derivate<br>
       11. Semințe de susan și produse derivate<br>
@@ -1727,54 +1770,874 @@
 </footer>
 
 <script>
-  const header = document.querySelector('header');
-  const banner = document.querySelector('.wait-banner');
-  const navPills = document.querySelectorAll('.nav-pill');
   const sections = document.querySelectorAll('section[id]');
+  const pills    = document.querySelectorAll('.nav-pill');
+  const header   = document.querySelector('header');
+  const banner   = document.querySelector('.wait-banner');
 
-  // Funcție pentru calculul spațiului ocupat de header + banner
-  const getOffset = () => (banner?.offsetHeight || 0) + (header?.offsetHeight || 0) + 8;
+  // Calculate real header height and apply to all sections dynamically
+  function getOffset() {
+    return (banner ? banner.offsetHeight : 0) + (header ? header.offsetHeight : 0) + 8;
+  }
 
-  // 1. Click Interceptat - Scroll precis
-  navPills.forEach(pill => {
-    pill.addEventListener('click', (e) => {
-      const targetId = pill.getAttribute('href');
-      if (!targetId.startsWith('#')) return;
-      
+  function applyScrollMargin() {
+    const offset = getOffset();
+    sections.forEach(s => s.style.scrollMarginTop = offset + 'px');
+  }
+
+  applyScrollMargin();
+  window.addEventListener('resize', applyScrollMargin);
+
+  // Intercept nav pill clicks — scroll manually with exact offset
+  pills.forEach(pill => {
+    pill.addEventListener('click', function(e) {
       e.preventDefault();
-      const targetSection = document.querySelector(targetId);
+      const targetId = this.getAttribute('href').slice(1);
+      const target   = document.getElementById(targetId);
+      if (!target) return;
 
-      if (targetSection) {
-        const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - getOffset();
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      }
+      const offset    = getOffset();
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+      // Update active pill immediately
+      pills.forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      this.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
     });
   });
 
-  // 2. IntersectionObserver - Detectare secțiune activă
-  // Folosim un rootMargin dinamic bazat pe înălțimea header-ului
-  const observerOptions = {
-    root: null,
-    rootMargin: `-${getOffset() + 10}px 0px -75% 0px`, // +10px marjă de siguranță
-    threshold: 0
-  };
-
+  // Update active pill on scroll via IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navPills.forEach(p => p.classList.remove('active'));
-        const activePill = document.querySelector(`.nav-pill[href="#${entry.target.id}"]`);
-        
-        if (activePill) {
-          activePill.classList.add('active');
-          // Scroll orizontal automat pentru meniul de categorii
-          activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        pills.forEach(p => p.classList.remove('active'));
+        const active = document.querySelector(`.nav-pill[href="#${e.target.id}"]`);
+        if (active) {
+          active.classList.add('active');
+          active.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
         }
       }
     });
-  }, observerOptions);
+  }, { rootMargin: '-10px 0px -85% 0px' });
 
   sections.forEach(s => observer.observe(s));
 </script>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  SISTEM MULTILINGV — RO / EN / HU
+//  Nu modifica nimic altceva din cod, doar acest bloc
+// ════════════════════════════════════════════════════════
+
+const TRANSLATIONS = {
+  ro: {
+    // ── META UI ──
+    wait_banner: "⏳ Timp de așteptare: 15 – 50 min · Preparate proaspete la comandă",
+    logo_sub: "Bar & Bistro by Rezident's",
+    phone_btn: "📞 Rezervări: 0772 239 588",
+
+    // ── NAV ──
+    nav_grill: "🔥 Grill",
+    nav_specialitati: "👨‍🍳 Specialități",
+    nav_pui: "🍗 Pui",
+    nav_pizza: "🍕 Pizza",
+    nav_paste: "🍝 Paste",
+    nav_ciorbe: "🥣 Ciorbe",
+    nav_salate: "🥗 Salate",
+    nav_copii: "🧒 Copii",
+    nav_garnituri: "🥔 Garnituri",
+    nav_desert: "🍰 Desert",
+    nav_bauturi: "🍹 Băuturi",
+
+    // ── SECȚIUNI TITLURI ──
+    sec_grill: "Platouri Grill",
+    sec_specialitati_header: "Specialitatea Bucătarului",
+    sec_pui: "Preparate Pui",
+    sec_pizza: "Pizza",
+    sec_paste: "Paste",
+    sec_ciorbe: "Ciorbe",
+    sec_salate: "Salate Vară",
+    sec_copii: "Meniu Copii",
+    sec_garnituri: "Garnituri",
+    sec_desert: "Desert",
+    sec_bauturi: "Băuturi",
+    sec_extras: "Produse Extra",
+
+    // ── GRILL PLATOURI ──
+    family_grill_name: "Family Grill",
+    family_grill_desc: "ceafă, piept de pui, aripi picante, caș pane, cartofi, sos",
+    crater_grill_name: "La Crater's Grill",
+    crater_grill_desc: "ceafă, cotlet, piept de pui, aripi, caș pane, mici (4), cartofi, sos",
+    mix_grill_name: "Mix Grill",
+    mix_grill_desc: "ceafă, piept de pui, mici (2), cârnaț, cartofi, sos",
+    badge_grill: "Grill — bucăți",
+    g_ceafa: "Ceafă porc",
+    g_cotlet: "Cotlet porc",
+    g_piept: "Piept de pui",
+    g_mici: "Mititei (4 mici + cartofi pai + muștar + pâine)",
+    g_pulpa: "Pulpă dezosată",
+
+    // ── SPECIALITĂȚI ──
+    sp1_name: "Ceafă Țigănească",
+    sp1_desc: "ceafă de porc, condimente, ou, slănină, ceapă, ardei, sos tomate, usturoi",
+    sp2_name: "Ceafă cu usturoi și vin alb",
+    sp2_desc: "",
+    sp3_name: "Șnițel La Crater",
+    sp3_desc: "șnițel de pui, ceapă, ardei, sos, roșii, bacon, cheddar, parmezan, cartofi aurii",
+    sp4_name: "Ciolan cu fasole și ceapă",
+    sp4_desc: "ciolan de porc, fasole, ceapă, ardei, sos de roșii, condiment, ceapă murată",
+    sp5_name: "Scăricică cu sos BBQ",
+    sp5_desc: "scăricică de porc, sos barbeque, condimente",
+    sp6_name: "Burger House La Crater",
+    sp6_desc: "pastilă vită/porc, chiflă burger, sos, roșii, ceapă, castraveți murați, salată iceberg, sos cheddar, cartofi pai",
+
+    // ── PUI ──
+    p1_name: "Șnițel pui",
+    p1_desc: "piept de pui, condiment, făină, ou, pesmet",
+    p2_name: "Crispy Piept",
+    p2_desc: "piept de pui, condiment, făină, ou, fulgi",
+    p3_name: "Escalop",
+    p3_desc: "piept de pui, condimente, usturoi, ciuperci, smântână de gătit",
+    p4_name: "Aripi picante",
+    p4_desc: "aripioare, chilli, condimente, bbq",
+
+    // ── CIORBE ──
+    c1_name: "Ciorbă de burtă 400 gr",
+    c1_desc: "burtă de vită, morcov, piper boabe, usturoi, smântână",
+    c2_name: "Ciorbă rădăuțeană de pui 400 gr",
+    c2_desc: "piept de pui, morcov, piper boabe, usturoi, smântână",
+    badge_extra_ciorba: "Extra la ciorbă",
+    extra_ardei: "Ardei iute",
+    extra_smantana: "Smântână",
+    extra_paine: "Pâine",
+
+    // ── SALATE ──
+    s1_name: "La Crater 350 gr",
+    s1_desc: "mix salată, piept de pui, ou fiert, feta, roșii, măsline, castraveți, morcov, dressing, pâine prăjită",
+    s2_name: "Prosciutto Crudo 350 gr",
+    s2_desc: "mix salată, prosciutto crudo, cremă de brânză, roșii, măsline, morcov, parmezan, sos, pâine prăjită",
+    s3_name: "Cezar 350 gr",
+    s3_desc: "mix salată, piept de pui, bacon, ou, parmezan, sos cezar, roșii cherry, pâine prăjită",
+    s4_name: "Grecească 350 gr",
+    s4_desc: "mix salată, roșii, castraveți, ceapă, ardei, măsline, brânză feta, sos grecesc",
+    s5_name: "Bon Ton 350 gr",
+    s5_desc: "mix salată, ton, măsline, porumb, roșii, ceapă, brânză feta",
+    s6_name: "Primavera 350 gr",
+    s6_desc: "mix salată, roșii, castraveți, ceapă, brânză feta, sos rémoulade",
+    badge_salate_simple: "Salate simple",
+    sal_varza: "Salată de varză",
+    sal_rosii: "Salată de roșii",
+    sal_castraveti: "Salată de castraveți",
+    sal_asortata: "Salată asortată / crudități",
+    sal_ceapa: "Salată de ceapă roșie",
+    sal_muratura: "Salată de murături",
+
+    // ── COPII ──
+    copii_tom_desc: "cașcaval pane, cartofi pai, sos",
+    copii_lion_desc: "crispy pui, cartofi pai, sos",
+    copii_cow_desc: "mini burger, cartofi pai, sos",
+
+    // ── GARNITURI ──
+    gar1: "Cartofi prăjiți 200 gr",
+    gar2: "Cartofi aurii 200 gr",
+    gar3: "Cartofi cu rozmarin & usturoi",
+    gar4: "Cartofi wedges 200 gr",
+    gar5: "Cartofi piure 200 gr",
+    gar6: "Ciuperci sote 200 gr",
+
+    // ── PASTE ──
+    pa1_name: "Carbonara 300 gr",
+    pa1_desc: "paste, bacon, smântână de gătit, parmezan, condimente",
+    pa2_name: "Pollo 300 gr",
+    pa2_desc: "paste, piept de pui, smântână de gătit, roșii, parmezan",
+    pa3_name: "Prosciutto 300 gr",
+    pa3_desc: "paste, șuncă, smântână de gătit, parmezan",
+    pa4_name: "Prosciutto e Funghi 300 gr",
+    pa4_desc: "paste, șuncă, smântână de gătit, ciuperci, parmezan",
+    pa5_name: "Quatro Formagi 300 gr",
+    pa5_desc: "paste, smântână de gătit, 4 feluri de brânză",
+    pa6_name: "Arrabiata 300 gr",
+    pa6_desc: "paste, ulei de măsline, ardei iute, usturoi, pastă de roșii",
+    pa7_name: "Tagliatele cu creveți",
+    pa7_desc: "creveți, ceapă, ardei, vin alb, usturoi, sos, roșii, lămâie",
+
+    // ── DESERT ──
+    d1: "Papanași",
+    d2: "Lava Cake",
+    d3: "Clătite cu Nutella",
+    d4: "Clătite cu Gem",
+    d5: "Cheese Cake",
+
+    // ── BĂUTURI subtitluri ──
+    b_racoritoare: "🥤 Răcoritoare",
+    b_cafea: "☕ Cafea",
+    b_bere: "🍺 Bere",
+    b_alcool: "🥃 Băuturi alcoolice",
+    b_cocktail: "🍹 Cocktail Bar",
+    b_vinuri: "🍷 Vinuri",
+
+    // ── RĂCORITOARE ──
+    r1: "Coca Cola 500 ml", r2: "Coca Cola / Fanta / Sprite 250 ml",
+    r3: "Fuze Tea diverse arome 250 ml", r4: "Cappy diverse arome 250 ml",
+    r5: "Schweppes diverse arome 250 ml", r6: "Energizant Red Bull 250 ml",
+    r7: "Limonadă 500 ml", r8: "Limonadă frozen diverse arome 500 ml",
+    r9: "Apă minerală / plată 330 ml", r10: "Apă minerală / plată 750 ml",
+
+    // ── CAFEA ──
+    ca1:"Espresso 40 ml", ca2:"Ristretto 20 ml", ca3:"Latte Macchiato 160 ml",
+    ca4:"Espresso Macchiato 50 ml", ca5:"Cappuccino 160 ml",
+    ca6:"Hot Chocolate 160 ml", ca7:"Frappé 160 ml",
+
+    // ── BERE ──
+    be1:"Heineken ST 330 ml", be2:"Ciuc Premium 330 ml", be3:"Ursus 300 ml",
+    be4:"Birra Moretti 330 ml", be5:"Corona Extra 375 ml", be6:"Ciuc Radler 330 ml",
+    be7:"Heineken F/A 330 ml", be8:"Bere draft / Halbă 400 ml",
+
+    // ── ALCOOL ──
+    al1:"Chivas Regal 50 ml", al2:"Jack Daniel's 50 ml", al3:"J&B 50 ml",
+    al4:"Ballantine's 50 ml", al5:"Absolut Vodka 50 ml",
+    al6:"Alexandrion Cognac 50 ml", al7:"Vinars Jidvei 50 ml",
+    al8:"Sheridans 50 ml", al9:"Aperol 50 ml", al10:"Tequila 50 ml",
+
+    // ── COCKTAIL DESC ──
+    ck1_desc:"vodcă, lichior, suc portocale, suc ananas, sirop portocală — 330 ml",
+    ck2_desc:"rom alb, suc lămâie, mentă, lime — 330 ml",
+    ck3_desc:"rom alb, cola, lime — 330 ml",
+    ck4_desc:"aperol, spumant, apă minerală, portocală — 330 ml",
+    ck5_desc:"spumant, sirop soc, lime, apă minerală, mentă — 330 ml",
+    ck6_desc:"gin, suc tonic, lime — 330 ml",
+    ck7_desc:"suc mere, suc lămâie, blue curaçao, lime, mentă — 330 ml",
+    ck8_desc:"piure cocos, suc ananas, ananas — 330 ml",
+    ck9_desc:"suc lămâie, lime, mentă — 330 ml",
+    non_alc: "Non-alcoolic",
+
+    // ── WINE WINERY ──
+    w_purcari: "Crama Purcari", w_jidvei: "Crama Jidvei", w_recas: "Crama Recaș",
+    w1:"Nocturne Rară Neagră 0,75 sec", w2:"Nocturne Roze de Purcari 0,75 sec",
+    w3:"Nocturne Sauvignon Blanc 0,75 sec",
+    w4:"Iluziv Roze 0,75", w5:"Iluziv Sauvignon Blanc 0,75",
+    w6:"Grigorescu Pinot Noir DS", w7:"Grigorescu Roze DS", w8:"Grigorescu Dry Muscat DS",
+    w9:"Selene Cabernet Sauvignon 0,75 sec", w10:"Sole Roze 0,75",
+    w11:"Sole Chardonnay Barrique 0,75", w12:"Implicit Fetească Neagră 0,75",
+    w13:"Implicit Roze 0,75", w14:"Implicit Sauvignon Blanc 0,75",
+
+    // ── EXTRA PRODUSE ──
+    ex1:"Salam dulce", ex2:"Salam picant", ex3:"Șuncă", ex4:"Bacon",
+    ex5:"Prosciutto Crudo", ex6:"Porumb", ex7:"Ciuperci", ex8:"Cașcaval",
+    ex9:"Feta", ex10:"Cremă de brânză", ex11:"Mozzarella", ex12:"Ou",
+    ex13:"Ambalaj pizza", ex14:"Ambalaj fel principal / supă",
+    ex_qty12:"1 buc",
+
+    // ── FOOTER ──
+    footer_sub: "Bar & Bistro by Rezident's",
+    allergen_title: "Lista Alergeni — Regulament UE 1169/2011",
+    allergen_text: `1. Cereale care conțin gluten (grâu, secară, orz, ovăz, grâu spelt, grâu mare) și produse derivate<br>
+      2. Crustacee și produse derivate<br>
+      3. Ouă și produse derivate<br>
+      4. Pește și produse derivate<br>
+      5. Arahide și produse derivate<br>
+      6. Soia și produse derivate<br>
+      7. Lapte și produse derivate (inclusiv lactoză)<br>
+      8. Fructe cu coajă (migdale, alune de pădure, fistic, nuci macadamia, nuci) și produse derivate<br>
+      9. Țelină și produse derivate<br>
+      10. Muștar și produse derivate<br>
+      11. Semințe de susan și produse derivate<br>
+      12. Dioxid de sulf și sulfiți în concentrații de peste 10 mg/kg sau 10 mg/litru, exprimate în SO2<br>
+      13. Lupin și produse derivate<br>
+      14. Moluște și produse derivate`,
+    footer_thanks: "Vă mulțumim pentru alegerea făcută!",
+  },
+
+  en: {
+    wait_banner: "⏳ Waiting time: 15 – 50 min · Fresh dishes made to order",
+    logo_sub: "Bar & Bistro by Rezident's",
+    phone_btn: "📞 Reservations: 0772 239 588",
+
+    nav_grill: "🔥 Grill", nav_specialitati: "👨‍🍳 Chef's Specials",
+    nav_pui: "🍗 Chicken", nav_pizza: "🍕 Pizza", nav_paste: "🍝 Pasta",
+    nav_ciorbe: "🥣 Soups", nav_salate: "🥗 Salads", nav_copii: "🧒 Kids",
+    nav_garnituri: "🥔 Sides", nav_desert: "🍰 Dessert", nav_bauturi: "🍹 Drinks",
+
+    sec_grill: "Grill Platters",
+    sec_specialitati_header: "Chef's Specials",
+    sec_pui: "Chicken Dishes",
+    sec_pizza: "Pizza",
+    sec_paste: "Pasta",
+    sec_ciorbe: "Soups",
+    sec_salate: "Summer Salads",
+    sec_copii: "Kids' Menu",
+    sec_garnituri: "Side Dishes",
+    sec_desert: "Dessert",
+    sec_bauturi: "Drinks",
+    sec_extras: "Extra Toppings",
+
+    family_grill_name: "Family Grill",
+    family_grill_desc: "pork neck, chicken breast, spicy wings, fried cottage cheese, potatoes, sauce",
+    crater_grill_name: "La Crater's Grill",
+    crater_grill_desc: "pork neck, pork chop, chicken breast, wings, fried cottage cheese, grilled sausages (4), potatoes, sauce",
+    mix_grill_name: "Mix Grill",
+    mix_grill_desc: "pork neck, chicken breast, grilled sausages (2), smoked sausage, potatoes, sauce",
+    badge_grill: "Grill — individual cuts",
+    g_ceafa: "Pork Neck",
+    g_cotlet: "Pork Chop",
+    g_piept: "Chicken Breast",
+    g_mici: "Grilled Sausages (4 pcs + french fries + mustard + bread)",
+    g_pulpa: "Boneless Chicken Leg",
+
+    sp1_name: "Gypsy-Style Pork Neck",
+    sp1_desc: "pork neck, spices, egg, bacon, onion, pepper, tomato sauce, garlic",
+    sp2_name: "Pork Neck with Garlic and White Wine",
+    sp2_desc: "",
+    sp3_name: "La Crater Schnitzel",
+    sp3_desc: "chicken schnitzel, onion, pepper, sauce, tomatoes, bacon, cheddar, parmesan, golden potatoes",
+    sp4_name: "Ham Hock with Beans and Onion",
+    sp4_desc: "pork ham hock, white beans, onion, pepper, tomato sauce, seasoning, pickled onion",
+    sp5_name: "Pork Ribs with BBQ Sauce",
+    sp5_desc: "pork spare ribs, barbecue sauce, spices",
+    sp6_name: "La Crater Burger",
+    sp6_desc: "beef/pork patty, burger bun, sauce, tomatoes, onion, pickles, iceberg lettuce, cheddar sauce, french fries",
+
+    p1_name: "Chicken Schnitzel",
+    p1_desc: "chicken breast, seasoning, flour, egg, breadcrumbs",
+    p2_name: "Crispy Chicken Breast",
+    p2_desc: "chicken breast, seasoning, flour, egg, cornflakes",
+    p3_name: "Chicken Escalope",
+    p3_desc: "chicken breast, spices, garlic, mushrooms, cooking cream",
+    p4_name: "Spicy Wings",
+    p4_desc: "chicken wings, chilli, spices, bbq sauce",
+
+    c1_name: "Beef Tripe Soup 400 g",
+    c1_desc: "beef tripe, carrot, peppercorns, garlic, sour cream",
+    c2_name: "Rădăuți Chicken Soup 400 g",
+    c2_desc: "chicken breast, carrot, peppercorns, garlic, sour cream",
+    badge_extra_ciorba: "Soup extras",
+    extra_ardei: "Hot pepper",
+    extra_smantana: "Sour cream",
+    extra_paine: "Bread",
+
+    s1_name: "La Crater 350 g",
+    s1_desc: "mixed greens, chicken breast, hard-boiled egg, feta, tomatoes, olives, cucumber, carrot, dressing, croutons",
+    s2_name: "Prosciutto Crudo 350 g",
+    s2_desc: "mixed greens, prosciutto crudo, cream cheese, tomatoes, olives, carrot, parmesan, dressing, croutons",
+    s3_name: "Caesar 350 g",
+    s3_desc: "mixed greens, chicken breast, bacon, egg, parmesan, caesar dressing, cherry tomatoes, croutons",
+    s4_name: "Greek 350 g",
+    s4_desc: "mixed greens, tomatoes, cucumber, onion, pepper, olives, feta cheese, Greek dressing",
+    s5_name: "Bon Ton 350 g",
+    s5_desc: "mixed greens, tuna, olives, corn, tomatoes, onion, feta cheese",
+    s6_name: "Primavera 350 g",
+    s6_desc: "mixed greens, tomatoes, cucumber, onion, feta cheese, rémoulade sauce",
+    badge_salate_simple: "Simple salads",
+    sal_varza: "Cabbage salad",
+    sal_rosii: "Tomato salad",
+    sal_castraveti: "Cucumber salad",
+    sal_asortata: "Mixed / crudités salad",
+    sal_ceapa: "Red onion salad",
+    sal_muratura: "Pickled salad",
+
+    copii_tom_desc: "fried cheese, french fries, sauce",
+    copii_lion_desc: "crispy chicken, french fries, sauce",
+    copii_cow_desc: "mini burger, french fries, sauce",
+
+    gar1: "French fries 200 g", gar2: "Golden potatoes 200 g",
+    gar3: "Rosemary & garlic potatoes", gar4: "Potato wedges 200 g",
+    gar5: "Mashed potatoes 200 g", gar6: "Sautéed mushrooms 200 g",
+
+    pa1_name: "Carbonara 300 g",
+    pa1_desc: "pasta, bacon, cooking cream, parmesan, spices",
+    pa2_name: "Pollo 300 g",
+    pa2_desc: "pasta, chicken breast, cooking cream, tomatoes, parmesan",
+    pa3_name: "Prosciutto 300 g",
+    pa3_desc: "pasta, ham, cooking cream, parmesan",
+    pa4_name: "Prosciutto e Funghi 300 g",
+    pa4_desc: "pasta, ham, cooking cream, mushrooms, parmesan",
+    pa5_name: "Four Cheese 300 g",
+    pa5_desc: "pasta, cooking cream, 4 types of cheese",
+    pa6_name: "Arrabiata 300 g",
+    pa6_desc: "pasta, olive oil, chilli pepper, garlic, tomato paste",
+    pa7_name: "Tagliatelle with Shrimp",
+    pa7_desc: "shrimp, onion, pepper, white wine, garlic, sauce, tomatoes, lemon",
+
+    d1: "Papanași (Romanian fried doughnuts)", d2: "Lava Cake",
+    d3: "Crêpes with Nutella", d4: "Crêpes with Jam", d5: "Cheesecake",
+
+    b_racoritoare: "🥤 Soft Drinks", b_cafea: "☕ Coffee",
+    b_bere: "🍺 Beer", b_alcool: "🥃 Spirits",
+    b_cocktail: "🍹 Cocktail Bar", b_vinuri: "🍷 Wines",
+
+    r1:"Coca Cola 500 ml", r2:"Coca Cola / Fanta / Sprite 250 ml",
+    r3:"Fuze Tea assorted flavours 250 ml", r4:"Cappy assorted flavours 250 ml",
+    r5:"Schweppes assorted flavours 250 ml", r6:"Red Bull Energy Drink 250 ml",
+    r7:"Lemonade 500 ml", r8:"Frozen lemonade assorted flavours 500 ml",
+    r9:"Still / Sparkling water 330 ml", r10:"Still / Sparkling water 750 ml",
+
+    ca1:"Espresso 40 ml", ca2:"Ristretto 20 ml", ca3:"Latte Macchiato 160 ml",
+    ca4:"Espresso Macchiato 50 ml", ca5:"Cappuccino 160 ml",
+    ca6:"Hot Chocolate 160 ml", ca7:"Frappé 160 ml",
+
+    be1:"Heineken ST 330 ml", be2:"Ciuc Premium 330 ml", be3:"Ursus 300 ml",
+    be4:"Birra Moretti 330 ml", be5:"Corona Extra 375 ml", be6:"Ciuc Radler 330 ml",
+    be7:"Heineken Alcohol-Free 330 ml", be8:"Draft Beer / Half Pint 400 ml",
+
+    al1:"Chivas Regal 50 ml", al2:"Jack Daniel's 50 ml", al3:"J&B 50 ml",
+    al4:"Ballantine's 50 ml", al5:"Absolut Vodka 50 ml",
+    al6:"Alexandrion Cognac 50 ml", al7:"Jidvei Brandy 50 ml",
+    al8:"Sheridans 50 ml", al9:"Aperol 50 ml", al10:"Tequila 50 ml",
+
+    ck1_desc:"vodka, liqueur, orange juice, pineapple juice, orange syrup — 330 ml",
+    ck2_desc:"white rum, lemon juice, mint, lime — 330 ml",
+    ck3_desc:"white rum, cola, lime — 330 ml",
+    ck4_desc:"aperol, sparkling wine, sparkling water, orange — 330 ml",
+    ck5_desc:"sparkling wine, elderflower syrup, lime, sparkling water, mint — 330 ml",
+    ck6_desc:"gin, tonic water, lime — 330 ml",
+    ck7_desc:"apple juice, lemon juice, blue curaçao, lime, mint — 330 ml",
+    ck8_desc:"coconut purée, pineapple juice, pineapple — 330 ml",
+    ck9_desc:"lemon juice, lime, mint — 330 ml",
+    non_alc: "Non-alcoholic",
+
+    w_purcari:"Purcari Winery", w_jidvei:"Jidvei Winery", w_recas:"Recaș Winery",
+    w1:"Nocturne Rare Black 0,75 dry", w2:"Nocturne Rosé de Purcari 0,75 dry",
+    w3:"Nocturne Sauvignon Blanc 0,75 dry",
+    w4:"Iluziv Rosé 0,75", w5:"Iluziv Sauvignon Blanc 0,75",
+    w6:"Grigorescu Pinot Noir DS", w7:"Grigorescu Rosé DS", w8:"Grigorescu Dry Muscat DS",
+    w9:"Selene Cabernet Sauvignon 0,75 dry", w10:"Sole Rosé 0,75",
+    w11:"Sole Chardonnay Barrique 0,75", w12:"Implicit Fetească Neagră 0,75",
+    w13:"Implicit Rosé 0,75", w14:"Implicit Sauvignon Blanc 0,75",
+
+    ex1:"Sweet salami", ex2:"Spicy salami", ex3:"Ham", ex4:"Bacon",
+    ex5:"Prosciutto Crudo", ex6:"Corn", ex7:"Mushrooms", ex8:"Yellow cheese",
+    ex9:"Feta", ex10:"Cream cheese", ex11:"Mozzarella", ex12:"Egg",
+    ex13:"Pizza packaging", ex14:"Main course / soup packaging",
+    ex_qty12:"1 pc",
+
+    footer_sub: "Bar & Bistro by Rezident's",
+    allergen_title: "Allergen List — EU Regulation 1169/2011",
+    allergen_text: `1. Cereals containing gluten (wheat, rye, barley, oats, spelt, khorasan wheat) and products thereof<br>
+      2. Crustaceans and products thereof<br>
+      3. Eggs and products thereof<br>
+      4. Fish and products thereof<br>
+      5. Peanuts and products thereof<br>
+      6. Soybeans and products thereof<br>
+      7. Milk and products thereof (including lactose)<br>
+      8. Nuts (almonds, hazelnuts, pistachios, macadamia, walnuts) and products thereof<br>
+      9. Celery and products thereof<br>
+      10. Mustard and products thereof<br>
+      11. Sesame seeds and products thereof<br>
+      12. Sulphur dioxide and sulphites at concentrations of more than 10 mg/kg or 10 mg/l expressed as SO2<br>
+      13. Lupin and products thereof<br>
+      14. Molluscs and products thereof`,
+    footer_thanks: "Thank you for choosing us!",
+  },
+
+  hu: {
+    wait_banner: "⏳ Várakozási idő: 15 – 50 perc · Friss ételek rendelésre készítve",
+    logo_sub: "Bar & Bisztró by Rezident's",
+    phone_btn: "📞 Foglalás: 0772 239 588",
+
+    nav_grill: "🔥 Grill", nav_specialitati: "👨‍🍳 Séf ajánlata",
+    nav_pui: "🍗 Csirke", nav_pizza: "🍕 Pizza", nav_paste: "🍝 Tészta",
+    nav_ciorbe: "🥣 Levesek", nav_salate: "🥗 Saláták", nav_copii: "🧒 Gyerekek",
+    nav_garnituri: "🥔 Köretek", nav_desert: "🍰 Desszert", nav_bauturi: "🍹 Italok",
+
+    sec_grill: "Grill Tálak",
+    sec_specialitati_header: "A Séf Ajánlata",
+    sec_pui: "Csirkefogások",
+    sec_pizza: "Pizza",
+    sec_paste: "Tészta",
+    sec_ciorbe: "Levesek",
+    sec_salate: "Nyári Saláták",
+    sec_copii: "Gyerek Menü",
+    sec_garnituri: "Köretek",
+    sec_desert: "Desszert",
+    sec_bauturi: "Italok",
+    sec_extras: "Extra Feltétek",
+
+    family_grill_name: "Family Grill",
+    family_grill_desc: "sertéstarkó, csirkemell, csípős szárny, rántott sajt, burgonya, szósz",
+    crater_grill_name: "La Crater's Grill",
+    crater_grill_desc: "sertéstarkó, karaj, csirkemell, szárny, rántott sajt, grillkolbász (4 db), burgonya, szósz",
+    mix_grill_name: "Mix Grill",
+    mix_grill_desc: "sertéstarkó, csirkemell, grillkolbász (2 db), füstölt kolbász, burgonya, szósz",
+    badge_grill: "Grill — adagok",
+    g_ceafa: "Sertéstarkó",
+    g_cotlet: "Sertéskaraj",
+    g_piept: "Csirkemell",
+    g_mici: "Grillkolbász (4 db + sült krumpli + mustár + kenyér)",
+    g_pulpa: "Csontozott csirkecomb",
+
+    sp1_name: "Cigányos Sertéstarkó",
+    sp1_desc: "sertéstarkó, fűszerek, tojás, szalonna, hagyma, paprika, paradicsomos szósz, fokhagyma",
+    sp2_name: "Sertéstarkó fokhagymával és fehérborral",
+    sp2_desc: "",
+    sp3_name: "La Crater Rántott Szelet",
+    sp3_desc: "csirkeszelet, hagyma, paprika, szósz, paradicsom, bacon, cheddar, parmezán, aranybarna burgonya",
+    sp4_name: "Csülök babbal és hagymával",
+    sp4_desc: "sertéscsülök, fehér bab, hagyma, paprika, paradicsomos szósz, fűszerek, savanyított hagyma",
+    sp5_name: "Sertésborda BBQ szósszal",
+    sp5_desc: "sertésborda, barbecue szósz, fűszerek",
+    sp6_name: "La Crater Burger",
+    sp6_desc: "marha/sertés fasírt, hamburger zsemle, szósz, paradicsom, hagyma, savanyított uborka, jégsaláta, cheddar szósz, sült krumpli",
+
+    p1_name: "Csirkeszelet",
+    p1_desc: "csirkemell, fűszerek, liszt, tojás, zsemlemorzsa",
+    p2_name: "Ropogós Csirkemell",
+    p2_desc: "csirkemell, fűszerek, liszt, tojás, kukoricapehely",
+    p3_name: "Csirke Escalope",
+    p3_desc: "csirkemell, fűszerek, fokhagyma, gomba, főzőtejszín",
+    p4_name: "Csípős Szárnyak",
+    p4_desc: "csirkeszárny, chilli, fűszerek, bbq szósz",
+
+    c1_name: "Pacalleves 400 g",
+    c1_desc: "marha pacal, sárgarépa, szemes bors, fokhagyma, tejföl",
+    c2_name: "Rădăuți-i Csirkeleves 400 g",
+    c2_desc: "csirkemell, sárgarépa, szemes bors, fokhagyma, tejföl",
+    badge_extra_ciorba: "Leves extrák",
+    extra_ardei: "Csípős paprika",
+    extra_smantana: "Tejföl",
+    extra_paine: "Kenyér",
+
+    s1_name: "La Crater 350 g",
+    s1_desc: "vegyes saláta, csirkemell, főtt tojás, feta, paradicsom, olívabogyó, uborka, sárgarépa, öntet, pirított kenyér",
+    s2_name: "Prosciutto Crudo 350 g",
+    s2_desc: "vegyes saláta, prosciutto crudo, krémsajt, paradicsom, olívabogyó, sárgarépa, parmezán, szósz, pirított kenyér",
+    s3_name: "Caesar 350 g",
+    s3_desc: "vegyes saláta, csirkemell, bacon, tojás, parmezán, caesar öntet, koktélparadicsom, pirított kenyér",
+    s4_name: "Görög 350 g",
+    s4_desc: "vegyes saláta, paradicsom, uborka, hagyma, paprika, olívabogyó, feta sajt, görög öntet",
+    s5_name: "Bon Ton 350 g",
+    s5_desc: "vegyes saláta, tonhal, olívabogyó, kukorica, paradicsom, hagyma, feta sajt",
+    s6_name: "Primavera 350 g",
+    s6_desc: "vegyes saláta, paradicsom, uborka, hagyma, feta sajt, rémoulade szósz",
+    badge_salate_simple: "Egyszerű saláták",
+    sal_varza: "Káposzta saláta",
+    sal_rosii: "Paradicsom saláta",
+    sal_castraveti: "Uborka saláta",
+    sal_asortata: "Vegyes / crudité saláta",
+    sal_ceapa: "Vöröshagyma saláta",
+    sal_muratura: "Savanyúság saláta",
+
+    copii_tom_desc: "rántott sajt, sült krumpli, szósz",
+    copii_lion_desc: "ropogós csirke, sült krumpli, szósz",
+    copii_cow_desc: "mini burger, sült krumpli, szósz",
+
+    gar1: "Sült krumpli 200 g", gar2: "Aranybarna burgonya 200 g",
+    gar3: "Rozmaring-fokhagymás burgonya", gar4: "Burgonyagerezdek 200 g",
+    gar5: "Burgonyapüré 200 g", gar6: "Sautéed gomba 200 g",
+
+    pa1_name: "Carbonara 300 g",
+    pa1_desc: "tészta, bacon, főzőtejszín, parmezán, fűszerek",
+    pa2_name: "Pollo 300 g",
+    pa2_desc: "tészta, csirkemell, főzőtejszín, paradicsom, parmezán",
+    pa3_name: "Prosciutto 300 g",
+    pa3_desc: "tészta, sonka, főzőtejszín, parmezán",
+    pa4_name: "Prosciutto e Funghi 300 g",
+    pa4_desc: "tészta, sonka, főzőtejszín, gomba, parmezán",
+    pa5_name: "Négy Sajtos 300 g",
+    pa5_desc: "tészta, főzőtejszín, 4 féle sajt",
+    pa6_name: "Arrabiata 300 g",
+    pa6_desc: "tészta, olívaolaj, chilli paprika, fokhagyma, paradicsom szósz",
+    pa7_name: "Tagliatelle garnélával",
+    pa7_desc: "garnéla, hagyma, paprika, fehérbor, fokhagyma, szósz, paradicsom, citrom",
+
+    d1: "Papanași (román fánk)", d2: "Lava Cake",
+    d3: "Palacsinta Nutellával", d4: "Palacsinta lekvárral", d5: "Sajttorta",
+
+    b_racoritoare: "🥤 Üdítők", b_cafea: "☕ Kávé",
+    b_bere: "🍺 Sör", b_alcool: "🥃 Szeszesitalok",
+    b_cocktail: "🍹 Koktél Bár", b_vinuri: "🍷 Borok",
+
+    r1:"Coca Cola 500 ml", r2:"Coca Cola / Fanta / Sprite 250 ml",
+    r3:"Fuze Tea különböző ízek 250 ml", r4:"Cappy különböző ízek 250 ml",
+    r5:"Schweppes különböző ízek 250 ml", r6:"Red Bull 250 ml",
+    r7:"Limonádé 500 ml", r8:"Fagyasztott limonádé különböző ízek 500 ml",
+    r9:"Ásványvíz / szénsavas víz 330 ml", r10:"Ásványvíz / szénsavas víz 750 ml",
+
+    ca1:"Espresso 40 ml", ca2:"Ristretto 20 ml", ca3:"Latte Macchiato 160 ml",
+    ca4:"Espresso Macchiato 50 ml", ca5:"Cappuccino 160 ml",
+    ca6:"Forró csokoládé 160 ml", ca7:"Frappé 160 ml",
+
+    be1:"Heineken ST 330 ml", be2:"Ciuc Premium 330 ml", be3:"Ursus 300 ml",
+    be4:"Birra Moretti 330 ml", be5:"Corona Extra 375 ml", be6:"Ciuc Radler 330 ml",
+    be7:"Heineken alkoholmentes 330 ml", be8:"Csapolt sör / korsó 400 ml",
+
+    al1:"Chivas Regal 50 ml", al2:"Jack Daniel's 50 ml", al3:"J&B 50 ml",
+    al4:"Ballantine's 50 ml", al5:"Absolut Vodka 50 ml",
+    al6:"Alexandrion Konyak 50 ml", al7:"Jidvei Pálinka 50 ml",
+    al8:"Sheridans 50 ml", al9:"Aperol 50 ml", al10:"Tequila 50 ml",
+
+    ck1_desc:"vodka, likőr, narancslé, ananászlé, narancsszirup — 330 ml",
+    ck2_desc:"fehér rum, citromlé, menta, lime — 330 ml",
+    ck3_desc:"fehér rum, kóla, lime — 330 ml",
+    ck4_desc:"aperol, pezsgő, ásványvíz, narancs — 330 ml",
+    ck5_desc:"pezsgő, bodza szirup, lime, ásványvíz, menta — 330 ml",
+    ck6_desc:"gin, tonik, lime — 330 ml",
+    ck7_desc:"almalé, citromlé, blue curaçao, lime, menta — 330 ml",
+    ck8_desc:"kókuszpüré, ananászlé, ananász — 330 ml",
+    ck9_desc:"citromlé, lime, menta — 330 ml",
+    non_alc: "Alkoholmentes",
+
+    w_purcari:"Purcari Pincészet", w_jidvei:"Jidvei Pincészet", w_recas:"Recaș Pincészet",
+    w1:"Nocturne Rară Neagră 0,75 száraz", w2:"Nocturne Rozé de Purcari 0,75 száraz",
+    w3:"Nocturne Sauvignon Blanc 0,75 száraz",
+    w4:"Iluziv Rozé 0,75", w5:"Iluziv Sauvignon Blanc 0,75",
+    w6:"Grigorescu Pinot Noir DS", w7:"Grigorescu Rozé DS", w8:"Grigorescu Dry Muscat DS",
+    w9:"Selene Cabernet Sauvignon 0,75 száraz", w10:"Sole Rozé 0,75",
+    w11:"Sole Chardonnay Barrique 0,75", w12:"Implicit Fetească Neagră 0,75",
+    w13:"Implicit Rozé 0,75", w14:"Implicit Sauvignon Blanc 0,75",
+
+    ex1:"Édes szalámi", ex2:"Csípős szalámi", ex3:"Sonka", ex4:"Bacon",
+    ex5:"Prosciutto Crudo", ex6:"Kukorica", ex7:"Gomba", ex8:"Sárga sajt",
+    ex9:"Feta", ex10:"Krémsajt", ex11:"Mozzarella", ex12:"Tojás",
+    ex13:"Pizza csomagolás", ex14:"Főétel / leves csomagolás",
+    ex_qty12:"1 db",
+
+    footer_sub: "Bar & Bisztró by Rezident's",
+    allergen_title: "Allergén Lista — 1169/2011/EU Rendelet",
+    allergen_text: `1. Glutént tartalmazó gabonafélék (búza, rozs, árpa, zab, tönkebúza, kamut) és ezekből készült termékek<br>
+      2. Rákfélék és ezekből készült termékek<br>
+      3. Tojás és tojásból készült termékek<br>
+      4. Hal és halból készült termékek<br>
+      5. Földimogyoró és abból készült termékek<br>
+      6. Szója és szójából készült termékek<br>
+      7. Tej és tejből készült termékek (beleértve a laktózt)<br>
+      8. Héjas gyümölcsűek (mandula, mogyoró, pisztácia, makadámiadió, dió) és ezekből készült termékek<br>
+      9. Zeller és zellerből készült termékek<br>
+      10. Mustár és mustárból készült termékek<br>
+      11. Szezámmag és szezámból készült termékek<br>
+      12. Kén-dioxid és szulfitok 10 mg/kg vagy 10 mg/liter feletti koncentrációban SO2-ban kifejezve<br>
+      13. Csillagfürt és csillagfürtből készült termékek<br>
+      14. Puhatestűek és belőlük készült termékek`,
+    footer_thanks: "Köszönjük, hogy minket választott!",
+  }
+};
+
+// ════ MAP: cheie → selector CSS ════
+// Fiecare cheie din TRANSLATIONS e legată de un element DOM prin data-t="cheie"
+// Adaugă atributele data-t la elementele HTML
+
+let currentLang = 'ro';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = TRANSLATIONS[lang];
+
+  // Activare butoane
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + lang).classList.add('active');
+
+  // Aplică traducerile pe elementele cu data-t
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.getAttribute('data-t');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+}
+
+// Adaugă data-t la toate elementele ce trebuie traduse
+// Rulează o singură dată la init
+function tagElements() {
+  const tag = (sel, key) => {
+    const el = document.querySelector(sel);
+    if (el) el.setAttribute('data-t', key);
+  };
+  const tagAll = (sel, keys) => {
+    const els = document.querySelectorAll(sel);
+    keys.forEach((k, i) => { if (els[i]) els[i].setAttribute('data-t', k); });
+  };
+
+  // Banner & header
+  tag('.wait-banner',            'wait_banner');
+  tag('.logo-sub',               'logo_sub');
+  tag('.phone-btn',              'phone_btn');
+
+  // Nav pills
+  tagAll('.nav-pill', [
+    'nav_grill','nav_specialitati','nav_pui','nav_pizza','nav_paste',
+    'nav_ciorbe','nav_salate','nav_copii','nav_garnituri','nav_desert','nav_bauturi'
+  ]);
+
+  // Section titles (h2 inside .section-title)
+  tagAll('.section-title h2', [
+    'sec_grill','sec_pui','sec_pizza','sec_paste',
+    'sec_ciorbe','sec_salate','sec_copii','sec_garnituri','sec_desert','sec_bauturi','sec_extras'
+  ]);
+
+  // Chef header
+  tag('.chef-header h2', 'sec_specialitati_header');
+
+  // ── Grill platouri ──
+  tagAll('.platter-name', ['family_grill_name','crater_grill_name','mix_grill_name']);
+  tagAll('.platter-desc', ['family_grill_desc','crater_grill_desc','mix_grill_desc']);
+
+  // Cat badge grill
+  const badges = document.querySelectorAll('.cat-badge');
+  if (badges[0]) badges[0].setAttribute('data-t','badge_grill');
+  if (badges[1]) badges[1].setAttribute('data-t','badge_extra_ciorba');
+  if (badges[2]) badges[2].setAttribute('data-t','badge_salate_simple');
+
+  // Grill bucati (menu-list din #grill)
+  const grillItems = document.querySelectorAll('#grill .menu-item-name');
+  const grillKeys = ['g_ceafa','g_cotlet','g_piept','g_mici','g_pulpa'];
+  grillKeys.forEach((k,i) => { if(grillItems[i]) grillItems[i].setAttribute('data-t',k); });
+
+  // ── Specialitati ──
+  const spNames = document.querySelectorAll('.chef-item-name');
+  const spDescs = document.querySelectorAll('.chef-item-desc');
+  ['sp1_name','sp2_name','sp3_name','sp4_name','sp5_name','sp6_name'].forEach((k,i) => {
+    if(spNames[i]) spNames[i].setAttribute('data-t',k);
+  });
+  ['sp1_desc','sp2_desc','sp3_desc','sp4_desc','sp5_desc','sp6_desc'].forEach((k,i) => {
+    if(spDescs[i]) spDescs[i].setAttribute('data-t',k);
+  });
+
+  // ── Pui ──
+  const puiItems = document.querySelectorAll('#pui .menu-item');
+  const puiKeys = [['p1_name','p1_desc'],['p2_name','p2_desc'],['p3_name','p3_desc'],['p4_name','p4_desc']];
+  puiItems.forEach((item, i) => {
+    const n = item.querySelector('.menu-item-name');
+    const d = item.querySelector('.menu-item-desc');
+    if(n && puiKeys[i]) n.setAttribute('data-t', puiKeys[i][0]);
+    if(d && puiKeys[i]) d.setAttribute('data-t', puiKeys[i][1]);
+  });
+
+  // ── Ciorbe ──
+  const ciItems = document.querySelectorAll('#ciorbe .menu-item');
+  [['c1_name','c1_desc'],['c2_name','c2_desc']].forEach(([nk,dk],i) => {
+    const item = ciItems[i];
+    if(!item) return;
+    const n = item.querySelector('.menu-item-name');
+    const d = item.querySelector('.menu-item-desc');
+    if(n) n.setAttribute('data-t', nk);
+    if(d) d.setAttribute('data-t', dk);
+  });
+
+  // Extra ciorba side items
+  const ciSides = document.querySelectorAll('#ciorbe .side-item-name');
+  ['extra_ardei','extra_smantana','extra_paine'].forEach((k,i) => {
+    if(ciSides[i]) ciSides[i].setAttribute('data-t',k);
+  });
+
+  // ── Paste ──
+  const paItems = document.querySelectorAll('#paste .paste-item');
+  const paKeys = [
+    ['pa1_name','pa1_desc'],['pa2_name','pa2_desc'],['pa3_name','pa3_desc'],
+    ['pa4_name','pa4_desc'],['pa5_name','pa5_desc'],['pa6_name','pa6_desc'],['pa7_name','pa7_desc']
+  ];
+  paItems.forEach((item,i) => {
+    const n = item.querySelector('.paste-item-name');
+    const d = item.querySelector('.paste-item-desc');
+    if(n && paKeys[i]) n.setAttribute('data-t', paKeys[i][0]);
+    if(d && paKeys[i]) d.setAttribute('data-t', paKeys[i][1]);
+  });
+
+  // ── Salate mari ──
+  const salCards = document.querySelectorAll('#salate .salata-card');
+  const salKeys = [
+    ['s1_name','s1_desc'],['s2_name','s2_desc'],['s3_name','s3_desc'],
+    ['s4_name','s4_desc'],['s5_name','s5_desc'],['s6_name','s6_desc']
+  ];
+  salCards.forEach((card,i) => {
+    const n = card.querySelector('.menu-item-name');
+    const d = card.querySelector('.menu-item-desc');
+    if(n && salKeys[i]) n.setAttribute('data-t', salKeys[i][0]);
+    if(d && salKeys[i]) d.setAttribute('data-t', salKeys[i][1]);
+  });
+
+  // Salate simple
+  const salSimple = document.querySelectorAll('#salate .sides-grid .side-item-name');
+  ['sal_varza','sal_rosii','sal_castraveti','sal_asortata','sal_ceapa','sal_muratura']
+    .forEach((k,i) => { if(salSimple[i]) salSimple[i].setAttribute('data-t',k); });
+
+  // ── Copii ──
+  const copiiDescs = document.querySelectorAll('.copii-desc');
+  ['copii_tom_desc','copii_lion_desc','copii_cow_desc'].forEach((k,i) => {
+    if(copiiDescs[i]) copiiDescs[i].setAttribute('data-t',k);
+  });
+
+  // ── Garnituri ──
+  const garItems = document.querySelectorAll('#garnituri .side-item-name');
+  ['gar1','gar2','gar3','gar4','gar5','gar6'].forEach((k,i) => {
+    if(garItems[i]) garItems[i].setAttribute('data-t',k);
+  });
+
+  // ── Desert ──
+  const desNames = document.querySelectorAll('.desert-name');
+  ['d1','d2','d3','d4','d5'].forEach((k,i) => {
+    if(desNames[i]) desNames[i].setAttribute('data-t',k);
+  });
+
+  // ── Băuturi subtitluri ──
+  const drinkSubs = document.querySelectorAll('.drinks-subtitle');
+  ['b_racoritoare','b_cafea','b_bere','b_alcool','b_cocktail','b_vinuri'].forEach((k,i) => {
+    if(drinkSubs[i]) drinkSubs[i].setAttribute('data-t',k);
+  });
+
+  // ── Răcoritoare ──
+  const rRows = document.querySelectorAll('#bauturi .drinks-section:nth-child(1) .drink-name');
+  ['r1','r2','r3','r4','r5','r6','r7','r8','r9','r10'].forEach((k,i) => {
+    if(rRows[i]) rRows[i].setAttribute('data-t',k);
+  });
+
+  // ── Cafea ──
+  const caRows = document.querySelectorAll('#bauturi .drinks-section:nth-child(2) .drink-name');
+  ['ca1','ca2','ca3','ca4','ca5','ca6','ca7'].forEach((k,i) => {
+    if(caRows[i]) caRows[i].setAttribute('data-t',k);
+  });
+
+  // ── Bere ──
+  const beRows = document.querySelectorAll('#bauturi .drinks-section:nth-child(3) .drink-name');
+  ['be1','be2','be3','be4','be5','be6','be7','be8'].forEach((k,i) => {
+    if(beRows[i]) beRows[i].setAttribute('data-t',k);
+  });
+
+  // ── Alcool ──
+  const alRows = document.querySelectorAll('#bauturi .drinks-section:nth-child(4) .drink-name');
+  ['al1','al2','al3','al4','al5','al6','al7','al8','al9','al10'].forEach((k,i) => {
+    if(alRows[i]) alRows[i].setAttribute('data-t',k);
+  });
+
+  // ── Cocktail desc ──
+  const ckDescs = document.querySelectorAll('.cocktail-desc');
+  ['ck1_desc','ck2_desc','ck3_desc','ck4_desc','ck5_desc','ck6_desc','ck7_desc','ck8_desc','ck9_desc']
+    .forEach((k,i) => { if(ckDescs[i]) ckDescs[i].setAttribute('data-t',k); });
+
+  // Non-alc badges
+  document.querySelectorAll('.non-alc-badge').forEach(el => el.setAttribute('data-t','non_alc'));
+
+  // ── Wine wineries ──
+  const wineryHeaders = document.querySelectorAll('.wine-winery-header');
+  ['w_purcari','w_jidvei','w_recas'].forEach((k,i) => {
+    if(wineryHeaders[i]) wineryHeaders[i].setAttribute('data-t',k);
+  });
+
+  const wineNames = document.querySelectorAll('.wine-name');
+  ['w1','w2','w3','w4','w5','w6','w7','w8','w9','w10','w11','w12','w13','w14']
+    .forEach((k,i) => { if(wineNames[i]) wineNames[i].setAttribute('data-t',k); });
+
+  // ── Extra produse ──
+  const exNames = document.querySelectorAll('.extra-chip-name');
+  ['ex1','ex2','ex3','ex4','ex5','ex6','ex7','ex8','ex9','ex10','ex11','ex12','ex13','ex14']
+    .forEach((k,i) => { if(exNames[i]) exNames[i].setAttribute('data-t',k); });
+
+  const exQty = document.querySelectorAll('.extra-chip-qty');
+  if(exQty[11]) exQty[11].setAttribute('data-t','ex_qty12');
+
+  // ── Footer ──
+  const footerSub = document.querySelector('footer > div:first-of-type');
+  if(footerSub) footerSub.setAttribute('data-t','footer_sub');
+  tag('.allergen-title', 'allergen_title');
+  tag('.allergen-text',  'allergen_text');
+  tag('.footer-thanks',  'footer_thanks');
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  tagElements();
+});
+</script>
+
 </body>
 </html>
